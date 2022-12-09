@@ -17,11 +17,11 @@
 class __StartUp
 {
    private:
-      static bool isInit;
+      static bool isInit = 0;
 public:
    __StartUp() { 
-      printf("[C++ -> uLCD] Starting up Pi GPIO: %d\n", isInit);
-      if (!isInit) {
+      printf("[C++ -> uLCD] Starting up Pi GPIO: %d\n", __StartUp::isInit);
+      if (!__StartUp::isInit) {
          gpioInitialise();
          std::atexit(gpioTerminate);
       }
