@@ -2,18 +2,18 @@
 
 #ifndef __UTIL_H__
 
-// #include <unistd.h>
+#include <unistd.h>
 
 void wait_us(int us) {
-    return; //usleep(us);
+    usleep(us);
 }
 
 void wait_ms(int ms) {
-    return; //usleep(1000*ms);
+    usleep(1000*ms);
 }
 
 void wait(int s) {
-    return; //usleep(1000*1000*s);
+    usleep(1000*1000*s);
 }
 
 #define __UTIL_H__

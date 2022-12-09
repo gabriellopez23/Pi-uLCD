@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef __PLATFORM__
+#ifndef __PLATFORM_H__
 
 #include <stdlib.h>
 
@@ -21,5 +21,5 @@
 //     gpioTerminate();
 // }
 
-#define __PLATFORM__
+#define __PLATFORM_H__
 #endif
