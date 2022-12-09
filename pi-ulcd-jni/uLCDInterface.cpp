@@ -64,7 +64,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                 // printf(" failed. Retrying...\n");
                 // fflush(stdout);
             }
-            wait_us(100);
+            wait_us(10);
             // printf(" done\n");
         }
     }
