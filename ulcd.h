@@ -207,7 +207,7 @@ class uLCD_4DGL
  
 public :
     // TODO: change ints to Pinname
-    uLCD_4DGL(char* sertty = "/dev/serial1", int rst = 17);
+    uLCD_4DGL(char* sertty = "/dev/ttyAMA0", int rst = 17);
  
 // General Commands *******************************************************************************
  
