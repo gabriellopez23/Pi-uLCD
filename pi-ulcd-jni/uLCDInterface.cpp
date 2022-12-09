@@ -18,11 +18,11 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_writeImageToULCD (JNIEnv 
 
     for (int row = 0; row < height; row++) {
         for (int col = 0; col < width; col++) {
-            uint16_t pixel_data = static_cast<uint16_t>(
-                    (jshort)      env->GetShortArrayElement(
+            jshort pixel_data = static_cast<uint16_t>(
+                    (jshort*)      env->GetShortArrayElements(
                     (jshortArray) env->GetObjectArrayElement(img, row),
-                                  col
-                ));
+                                  nullptr
+                )[col]);
             uLCD.write_byte(static_cast<int>(pixel_data));
         }
     }
