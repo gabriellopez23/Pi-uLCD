@@ -17,7 +17,7 @@ namespace nana {
     const int DEFAULT_SERIAL_BAUD_RATE = 9600;
     class Serial { //: Stream {
         public:
-        Serial(char* location, int baudrate = DEFAULT_SERIAL_BAUD_RATE);
+        Serial(const char* location, int baudrate = DEFAULT_SERIAL_BAUD_RATE);
         ~Serial();
         int baud(int baudrate);
         char getc();
@@ -25,7 +25,7 @@ namespace nana {
         bool readable();
 
         private:
-        char* location;
+        const char* location;
         int baudrate;
         int _ser;
     };
