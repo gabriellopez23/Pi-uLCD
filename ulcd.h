@@ -24,7 +24,7 @@
 // @author Stephane Rochon
 
 #include "platform.h"
-#include <format>
+#include <stdarg.h>
 
 
 // Debug Verbose off - SGE commands echoed to USB serial for debugmode=1
