@@ -39,4 +39,4 @@ target_link_libraries(pi-ulcd pigpio)
 # add_library( mySharedLib SHARED ${MY_CPP_FILES} ) # create a shared library
 
 add_executable( pi-ulcd-demo main.cpp )
-target_link_libraries( pi-ulcd-demo libpi-ulcd.a )
+target_link_libraries( pi-ulcd-demo ./libpi-ulcd.a )
