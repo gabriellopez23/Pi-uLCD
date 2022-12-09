@@ -8,6 +8,10 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_writeImageToULCD (JNIEnv 
     int height = env->GetArrayLength(img);
     int width  = env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, 0));
 
+    if (sector_start < 0 || img == NULL) {
+        return static_cast<jboolean>(false);
+    }
+
     uint32_t sector_address = static_cast<uint32_t>(sector_start);
 
     uLCD.media_init();
@@ -15,6 +19,12 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_writeImageToULCD (JNIEnv 
         ((sector_address >> 16) & 0xFFFF), 
         ((sector_address >>  0) & 0xFFFF)
     );
+
+    for (int row = 0; row < height; row++) {
+        if (env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, row)) != width) {
+            return static_cast<jboolean>(false);
+        }
+    }
 
     for (int row = 0; row < height; row++) {
         for (int col = 0; col < width; col++) {
