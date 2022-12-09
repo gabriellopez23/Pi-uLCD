@@ -4,8 +4,8 @@ project( pi-ulcd )
 add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
 
 # set your include directories (if you have any)
-target_include_directories( pi-ulcd includes )
-target_include_directories( pi-ulcd mbed-hal-interface )
+target_include_directories( pi-ulcd PRIVATE includes )
+target_include_directories( pi-ulcd PRIVATE mbed-hal-interface )
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 
