@@ -3,6 +3,7 @@
 
 
 int main(int argc, char* argv) {
+    printf("runnning demo program\n");
     uLCD_4DGL uLCD;
     uLCD.printf("\nHello uLCD World\n"); //Default Green on black text
     uLCD.printf("\n  Starting Demo...");
