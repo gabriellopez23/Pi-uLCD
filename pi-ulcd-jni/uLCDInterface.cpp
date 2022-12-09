@@ -2,15 +2,11 @@
 #include "ulcd.h"
 #include <cstdint>
 
-JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_writeImageToULCD (JNIEnv * env, jclass java_class, jint sector_start, jobjectArray img) {
+JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internal_writeImageToULCD (JNIEnv * env, jclass java_class, jint sector_start, jobjectArray img) {
     uLCD_4DGL uLCD;
 
     int height = env->GetArrayLength(img);
     int width  = env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, 0));
-
-    if (sector_start < 0 || env->IsSameObject(env, img, NULL)) {
-        return static_cast<jboolean>(false);
-    }
 
     uint32_t sector_address = static_cast<uint32_t>(sector_start);
 

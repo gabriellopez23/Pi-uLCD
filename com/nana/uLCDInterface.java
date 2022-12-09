@@ -8,7 +8,12 @@ public final class uLCDInterface {
         System.loadLibrary("pi-ulcd-jni");
     }
 
-    public static final native boolean writeImageToULCD(int sectorStart, byte[][] image);
+    private static final native boolean internal_writeImageToULCD(int sectorStart, byte[][] image);
+
+    public static final boolean writeImageToULCD(int sectorStart, byte[][] image) {
+        if (sectorStart > 0 && image != null) return internal_writeImageToULCD(sectorStart, image);
+        else return false;
+    }
 
     private static interface ImageConverter {
         public int getIntColor(int row, int col);
