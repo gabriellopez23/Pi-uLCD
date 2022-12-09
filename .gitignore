@@ -1,2 +1,3 @@
 pigpio.h
 .vscode/
+build/
