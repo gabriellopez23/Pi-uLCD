@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-// import javafx.scene.image.WritableImage;
+import javafx.scene.image.WritableImage;
 
 import javax.imageio.ImageIO;
 
@@ -50,17 +50,30 @@ public final class uLCDInterface {
         return convertImage(width, height, img, img::getRGB);
     }
 
-    // public static final short[][] imageToRAW(WritableImage img) {
-    //     int width = (int) img.getWidth();
-    //     int height = (int) img.getHeight();
-    //     return convertImage(width, height, img, img.getPixelReader()::getArgb);
-    // }
+    public static final short[][] imageToRAW(WritableImage img) {
+        int width = (int) img.getWidth();
+        int height = (int) img.getHeight();
+        return convertImage(width, height, img, img.getPixelReader()::getArgb);
+    }
+
+    public static final int SECTOR_SIZE_BYTES = 512;
+    public static       int baseSectorAddress = 0x32;
+    public static final int calculateSectorSize(short[][] image) {
+        if (image == null || image.length <= 0 || image[0].length <= 0) return -1;
+        int width = image[0].length;
+        for (int i = 0; i < image.length; i++) {
+            if (image[i].length != width) return -1;
+        }
+        return (int) Math.ceil(1.0 * image.length * image[0].length / 512);
+    }
 
     public static void main(String[] args) throws IOException {
+        int sectorStart = baseSectorAddress;
         for (int i = 0; i < args.length; i++) {
             BufferedImage image = ImageIO.read(new File(args[i]));
-            boolean writeImage = writeImageToULCD(0x32, imageToRAW(image));
-            System.out.printf("Writing image %s to sector. %s.\n", args[i], writeImage ? "Success" : "Failed");
+            boolean writeImage = writeImageToULCD(sectorStart, imageToRAW(image));
+            System.out.printf("Writing image %s to sector %x. %s.\n", args[i], sectorStart, writeImage ? "Success" : "Failed");
+            sectorStart += calculateSectorSize(image);
         }
     }
 }
