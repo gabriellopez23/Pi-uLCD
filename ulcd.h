@@ -293,7 +293,7 @@ public :
     char read_byte();
     int  read_word();
     void write_byte(int);
-    void write_word(int);
+    int write_word(int);
     void flush_media();
     void display_image(int, int);
     void display_video(int, int);
