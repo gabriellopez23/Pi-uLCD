@@ -35,10 +35,10 @@ public final class uLCDInterface {
       for (int row = 0; row < height; row++) {
          for (int col = 0; col < width; col++) {
             int imgPixel = converter.getIntColor(row, col);
-            result[row][col] = (short) ((((imgPixel >> 16) & 0x1F) << 11) 
-                                      | (((imgPixel >>  8) & 0x3F) <<  5) 
-                                      | (((imgPixel >>  0) & 0x1F) <<  0)
-                                       );
+            result[row][col] = (short) (((imgPixel & 0xF80000) >> 8) 
+                                      | ((imgPixel & 0x00FC00) >> 5) 
+                                      | ((imgPixel & 0x0000F8) >> 3)
+             );
          }
       }
       return result;
