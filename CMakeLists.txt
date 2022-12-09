@@ -7,7 +7,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 #adding pigpio to project
 add_subdirectory(pigpio)
-target_link_libraries(RPapp pigpio)
+target_link_libraries(pi-ulcd pigpio)
 
 # tell cmake what what are your source files
 set( CPP_SOURCE_FILES 
