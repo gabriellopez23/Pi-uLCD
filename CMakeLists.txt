@@ -45,7 +45,7 @@ target_link_libraries( pi-ulcd-demo PRIVATE Threads::Threads )
 target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
 
 install(
-    FILES ../build-java.sh
+    FILES build-java.sh
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
     DESTINATION ./
 )
