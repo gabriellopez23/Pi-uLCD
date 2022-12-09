@@ -1,15 +1,5 @@
 #include "mbed-hal-interface/Serial.h"
 
-// TODO: proper location
-class StartUp
-{
-public:
-   StartUp()
-   { gpioInitialise(); }
-};
-
-StartUp startup;
-
 int nana::Serial::baud(int baudrate) {
     this-> baudrate = baudrate;
     if (__PI_UART_INTERFACE == __PI_PIGPIO) {

@@ -13,6 +13,17 @@
 
 #include "util.h"
 
+
+// TODO: proper location
+class StartUp
+{
+public:
+   StartUp()
+   { gpioInitialise(); std::atexit(exiting);}
+};
+
+static const StartUp __gpio_startup_config;
+
 // void initialize_platform() {
 //     if (gpioInitialise() < 0) exit(EXIT_FAILURE);
 // }
