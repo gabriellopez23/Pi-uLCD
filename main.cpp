@@ -6,6 +6,7 @@
 void demo_program(int);
 
 int main(int argc, char** argv) {
+    StartUpGPIO _;
     while (1) {
         std::string choice;
 

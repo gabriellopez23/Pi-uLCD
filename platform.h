@@ -14,10 +14,10 @@
 #include "util.h"
 
 // TODO: proper location
-class __StartUp
+class StartUpGPIO
 {
 public:
-   __StartUp() { 
+   StartUpGPIO() { 
       printf("[C++ -> uLCD] Starting up Pi GPIO\n");
       gpioInitialise();
       std::atexit(gpioTerminate);
