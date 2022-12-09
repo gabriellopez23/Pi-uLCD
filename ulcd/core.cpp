@@ -475,7 +475,7 @@ int uLCD_4DGL::printf(const char *fmt, ...) {
     if (buffer == 0) return -1;
     sprintf(buffer, fmt, args);
     for (int i = 0; i < buffer_size; i++) {
-        printf("%d", buffer[i]);
+        std::printf("%c", buffer[i]);
         _putc(buffer[i]);
     }
     free(buffer);
