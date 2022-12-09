@@ -264,6 +264,10 @@ public :
     void pen_size(char);
     void BLIT(int x, int y, int w, int h, int *colors);
  
+// printf
+    void printint(int xx, int base, int sign);
+    int  printf(char *fmt, ...);
+    
 // Text Commands
     void set_font(char);
     void set_font_size(char width, char height);  
@@ -326,9 +330,6 @@ protected :
     virtual char _getc() {
         return -1;
     }
-
-    void printint(int xx, int base, int sign);
-    int  printf(char *fmt, ...);
  
     void freeBUFFER  (void);
     void writeBYTE   (char);
