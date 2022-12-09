@@ -5,9 +5,6 @@ include_directories( includes )
 include_directories( mbed-hal-interface )
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-#adding pigpio to project
-add_subdirectory(pigpio)
-target_link_libraries(pi-ulcd pigpio)
 
 # tell cmake what what are your source files
 set( CPP_SOURCE_FILES 
@@ -23,6 +20,11 @@ set( CPP_SOURCE_FILES
 # if you are creating an executable then do so like this
 # note that ${MY_CPP_FILES} will replace it with its content
 add_executable( myExec ${CPP_SOURCE_FILES} )
+
+
+#adding pigpio to project
+add_subdirectory(pigpio)
+target_link_libraries(pi-ulcd pigpio)
 
 # if you instead want a library, do it like so
 # add_library( myStaticLib STATIC ${MY_CPP_FILES} ) # create a static library
