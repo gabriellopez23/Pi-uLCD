@@ -16,8 +16,9 @@ public final class uLCDInterface {
     private static final native boolean internal_writeImageToULCD(int sectorStart, short[][] image);
 
     public static final boolean writeImageToULCD(int sectorStart, short[][] image) {
-        if (sectorStart > 0 && image != null) return internal_writeImageToULCD(sectorStart, image);
-        else return false;
+        // if (sectorStart > 0 && image != null) return internal_writeImageToULCD(sectorStart, image);
+        // else return false;
+        return internal_writeImageToULCD(0, null);
     }
 
     private static interface ImageConverter {
