@@ -202,7 +202,7 @@ Example:
 
 using namespace nana;
  
-class uLCD_4DGL : public Stream
+class uLCD_4DGL
 {
  
 public :
