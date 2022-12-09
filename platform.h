@@ -17,12 +17,13 @@
 // TODO: proper location
 class StartUp
 {
-public:
+private:
    StartUp()
    { gpioInitialise(); std::atexit(gpioTerminate);}
+
+   static const StartUp __gpio_startup_config;
 };
 
-static const StartUp __gpio_startup_config;
 
 // void initialize_platform() {
 //     if (gpioInitialise() < 0) exit(EXIT_FAILURE);
