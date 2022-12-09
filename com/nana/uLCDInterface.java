@@ -14,14 +14,28 @@ import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 import javafx.scene.SnapshotResult;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.util.Callback;
+import java.util.concurrent.Semaphore;
 
 import javax.imageio.ImageIO;
 
 public final class uLCDInterface {
-    private void writeSnapshotImage(String file) {
+    private static void waitForRunLater() throws InterruptedException {
+        Semaphore semaphore = new Semaphore(0);
+        Platform.runLater(() -> semaphore.release());
+        semaphore.acquire();
+    }
+    private static class SettableInt {
+        public int value;
+        public void set(int newValue) {
+            this.value = newValue;
+        }
+    }
+    private static int writeSnapshotImage(int sector, String file) {
         WebView browser = new WebView();
         WebEngine webEngine = browser.getEngine();
         webEngine.load(file);
+        final SettableInt ret = new SettableInt();
         // without this runlater, the first capture is missed and all following captures are offset
         Platform.runLater(new Runnable() {
             public void run() {
@@ -37,7 +51,9 @@ public final class uLCDInterface {
                             webView.snapshot(new Callback<SnapshotResult,Void>() {
                                 @Override
                                 public Void call(SnapshotResult snapshotResult) {
-                                    capture.set(SwingFXUtils.fromFXImage(snapshotResult.getImage(), null));
+                                    short[][] rawImage = imageToRAW(SwingFXUtils.fromFXImage(snapshotResult.getImage()));
+                                    writeImageToULCD(sector, rawImage);
+                                    ret.set(calculateSectorSize(rawImage));
                                     unlatch();
                                     return null;
                                 }
@@ -50,6 +66,8 @@ public final class uLCDInterface {
                 }.start();
             }
         });
+        waitForRunLater();
+        return ret.value;
     }
 
     static {
@@ -114,12 +132,17 @@ public final class uLCDInterface {
     public static void main(String[] args) throws IOException {
         int sectorStart = baseSectorAddress;
         for (int i = 0; i < args.length; i++) {
-            BufferedImage image = ImageIO.read(new File(args[i]));
-            short[][] rgb565Image = imageToRAW(image);
-            boolean writeImage = writeImageToULCD(sectorStart, rgb565Image);
-            System.out.printf("Writing image %s to sector 0x%x. %s.\n", args[i], sectorStart, writeImage ? "Success" : "Failed");
-            if (writeImage) sectorAddresses.put(args[i], sectorStart);
-            if (writeImage) sectorStart += calculateSectorSize(rgb565Image);
+            if (args[i].toLowerCase().endsWith(".png") || args[i].toLowerCase().endsWith(".jpg") || args[i].toLowerCase().endsWith(".jpeg")) {
+                BufferedImage image = ImageIO.read(new File(args[i]));
+                short[][] rgb565Image = imageToRAW(image);
+                boolean writeImage = writeImageToULCD(sectorStart, rgb565Image);
+                System.out.printf("Writing image %s to sector 0x%x. %s.\n", args[i], sectorStart, writeImage ? "Success" : "Failed");
+                if (writeImage) sectorAddresses.put(args[i], sectorStart);
+                if (writeImage) sectorStart += calculateSectorSize(rgb565Image);
+            } else if (args[i].toLowerCase().endsWith(".html")) {
+                sectroAddresses.put(args[i], sectorStart);
+                sectorStart += writeSnapshotImage(sectorStart, args[i]);
+            }
         }
         System.out.printf("\n\n\n\n========================================\nSummary: \n");
         PrintWriter output = new PrintWriter(new File("uLCD_SD_sector_map.h"));
