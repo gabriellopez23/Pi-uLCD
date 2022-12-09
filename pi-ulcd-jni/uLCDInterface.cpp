@@ -64,7 +64,6 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                 col--;
                 // printf("x");
                 // fflush(stdout);
-                continue;
             }
             // printf(" done\n");
         }
