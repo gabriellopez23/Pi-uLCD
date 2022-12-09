@@ -46,7 +46,7 @@ namespace nana {
         /**
          * @brief Sends a byte to the serial connection
          * 
-         * @param c Byte to send
+         * @param c Byte to send to serial
          * @return Success on write, otherwise failure (See 4DGL documentation)
          */
         int putc(const unsigned char c);
