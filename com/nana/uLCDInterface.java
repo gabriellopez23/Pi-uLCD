@@ -5,7 +5,7 @@ import javafx.scene.image.WritableImage;
 
 public final class uLCDInterface {
     static {
-        System.loadLibrary("pi-ulcd-jni");
+        System.load("./libpi-ulcd-jni.so");
     }
 
     public static final native boolean writeImageToULCD(int sectorStart, byte[][] image);
