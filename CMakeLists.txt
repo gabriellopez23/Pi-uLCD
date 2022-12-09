@@ -35,4 +35,4 @@ target_link_libraries( pi-ulcd-demo PRIVATE pigpio )
 target_link_libraries( pi-ulcd-demo PRIVATE Threads::Threads )
 target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
 
-file(COPY ./java.mk ./build/java.mk)
+file(COPY ./java.mk DESTINATION ./build/)
