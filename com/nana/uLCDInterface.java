@@ -16,6 +16,8 @@ import javafx.scene.SnapshotResult;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.util.Callback;
 import java.util.concurrent.Semaphore;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 import javax.imageio.ImageIO;
 
@@ -37,7 +39,11 @@ public final class uLCDInterface {
         }
     }
     private static int writeSnapshotImage(int sector, String file) {
+        Stage s = new Stage("headless");
+        s.setWidth(0);
+        s.setHeight(0);
         WebView webView = new WebView();
+        s.setScene(webView);
         WebEngine webEngine = webView.getEngine();
         webEngine.load(file);
         final SettableInt ret = new SettableInt();
@@ -70,6 +76,7 @@ public final class uLCDInterface {
                 }.start();
             }
         });
+        s.show();
         waitForRunLater();
         return ret.value;
     }
