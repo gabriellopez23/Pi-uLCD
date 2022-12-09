@@ -9,6 +9,7 @@ int nana::Serial::baud(int baudrate) {
         if ((_ser = serOpen((char*) this -> location, baudrate, 0)) < 0) {
             exit(__INTERFACE_FATAL_ERROR);
         }
+        return __INTERFACE_SUCCESS;
     }
     return __INTERFACE_UNSUPPORTED_INTERFACE;
 }
