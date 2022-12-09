@@ -1,14 +1,5 @@
 project( pi-ulcd )
 
-# make a pi-ulcd static library
-add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
-
-# set your include directories (if you have any)
-target_include_directories( pi-ulcd PRIVATE includes )
-target_include_directories( pi-ulcd PRIVATE mbed-hal-interface )
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-
 # tell cmake what what are your source files
 set( LIB_CPP_SOURCE_FILES 
     rpi-hal-implementation/DigitalOut.cpp
@@ -19,6 +10,15 @@ set( LIB_CPP_SOURCE_FILES
     ulcd/text.cpp
     ulcd/core.cpp
     )
+    
+# make a pi-ulcd static library
+add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
+
+# set your include directories (if you have any)
+target_include_directories( pi-ulcd PRIVATE includes )
+target_include_directories( pi-ulcd PRIVATE mbed-hal-interface )
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 
 # if you are creating an executable then do so like this
 # note that ${MY_CPP_FILES} will replace it with its content
