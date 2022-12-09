@@ -1,16 +1,21 @@
 package com.nana;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import javafx.scene.image.WritableImage;
+
+import javax.imageio.ImageIO;
 
 public final class uLCDInterface {
     static {
         System.loadLibrary("pi-ulcd-jni");
     }
 
-    private static final native boolean internal_writeImageToULCD(int sectorStart, byte[][] image);
+    private static final native boolean internal_writeImageToULCD(int sectorStart, short[][] image);
 
-    public static final boolean writeImageToULCD(int sectorStart, byte[][] image) {
+    public static final boolean writeImageToULCD(int sectorStart, short[][] image) {
         if (sectorStart > 0 && image != null) return internal_writeImageToULCD(sectorStart, image);
         else return false;
     }
@@ -46,9 +51,11 @@ public final class uLCDInterface {
         return convertImage(width, height, img, img.getPixelReader()::getArgb);
     }
 
-    public static void main(String[] args) {
-        for (int i = 0; i < args.length; i++)
-            System.out.printf(args[i] + "\n");
-        System.out.println("Loaded library " + writeImageToULCD(0, null));
+    public static void main(String[] args) throws IOException {
+        for (int i = 0; i < args.length; i++) {
+            BufferedImage image = ImageIO.read(new File(args[i]));
+            boolean writeImage = writeImageToULCD(0x0, imageToRAW(image));
+            System.out.printf("Writing image %s to sector. %s.\n", args[i], writeImage ? "Success" : "Failed");
+        }
     }
 }
