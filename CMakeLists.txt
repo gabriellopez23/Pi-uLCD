@@ -1,5 +1,9 @@
 project( pi-ulcd )
 
+# dependencies for cmake
+find_package(Threads REQUIRED)
+add_subdirectory(pigpio)
+
 # tell cmake what what are your source files
 set( LIB_CPP_SOURCE_FILES 
     rpi-hal-implementation/DigitalOut.cpp
@@ -10,7 +14,7 @@ set( LIB_CPP_SOURCE_FILES
     ulcd/text.cpp
     ulcd/core.cpp
     )
-    
+
 # make a pi-ulcd static library
 add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
 
@@ -25,15 +29,15 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # add_executable( pi-ulcd ${LIB_CPP_SOURCE_FILES} )
 
 #add pthread library
-find_package(Threads REQUIRED)
 target_link_libraries(pi-ulcd Threads::Threads)
 
 #adding pigpio to project
-add_subdirectory(pigpio)
 target_link_libraries(pi-ulcd pigpio)
 
 #compiling demo with this lib
 add_executable( pi-ulcd-demo main.cpp )
+target_include_directories( pi-ulcd-demo PRIVATE includes )
+target_include_directories( pi-ulcd-demo PRIVATE mbed-hal-interface )
 target_link_libraries( pi-ulcd-demo Threads::Threads )
 target_link_libraries( pi-ulcd-demo pigpio )
 target_link_libraries( pi-ulcd-demo pi-ulcd )
