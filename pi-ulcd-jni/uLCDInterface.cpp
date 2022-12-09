@@ -8,7 +8,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_writeImageToULCD (JNIEnv 
     int height = env->GetArrayLength(img);
     int width  = env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, 0));
 
-    if (sector_start < 0 || img == NULL) {
+    if (sector_start < 0 || env->IsSameObject(env, img, NULL)) {
         return static_cast<jboolean>(false);
     }
 
