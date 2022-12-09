@@ -59,7 +59,7 @@ public final class uLCDInterface {
     public static void main(String[] args) throws IOException {
         for (int i = 0; i < args.length; i++) {
             BufferedImage image = ImageIO.read(new File(args[i]));
-            boolean writeImage = writeImageToULCD(0x0, imageToRAW(image));
+            boolean writeImage = writeImageToULCD(0x32, imageToRAW(image));
             System.out.printf("Writing image %s to sector. %s.\n", args[i], writeImage ? "Success" : "Failed");
         }
     }
