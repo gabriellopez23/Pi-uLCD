@@ -4,17 +4,11 @@
 
 #include <unistd.h>
 
-void wait_us(int us) {
-    usleep(us);
-}
+void wait_us(int us);
 
-void wait_ms(int ms) {
-    usleep(1000*ms);
-}
+void wait_ms(int ms);
 
-void wait(int s) {
-    usleep(1000*1000*s);
-}
+void wait(int s);
 
 #define __UTIL_H__
 #endif
