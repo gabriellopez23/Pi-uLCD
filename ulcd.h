@@ -24,6 +24,8 @@
 // @author Stephane Rochon
 
 #include "platform.h"
+#include <format>
+
 
 // Debug Verbose off - SGE commands echoed to USB serial for debugmode=1
 #ifndef DEBUGMODE
@@ -265,9 +267,8 @@ public :
     void BLIT(int x, int y, int w, int h, int *colors);
  
 // printf
-    void printint(int xx, int base, int sign);
     int  printf(char *fmt, ...);
-    
+
 // Text Commands
     void set_font(char);
     void set_font_size(char width, char height);  

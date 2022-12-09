@@ -466,72 +466,17 @@ int uLCD_4DGL :: getSTATUS(char *command, int number)   // read screen info and 
  
     return resp;
 }
-
-void uLCD_4DGL::printint(int xx, int base, int sign)
-{
-  static char digits[] = "0123456789abcdef";
-  char buf[16];
-  int i;
-  unsigned int x;
-
-  if(sign && (sign = xx < 0))
-    x = -xx;
-  else
-    x = xx;
-
-  i = 0;
-  do{
-    buf[i++] = digits[x % base];
-  }while((x /= base) != 0);
-
-  if(sign)
-    buf[i++] = '-';
-
-  while(--i >= 0)
-    _putc(buf[i]);
-}
-
 // Print to the console. only understands %d, %x, %p, %s.
-int uLCD_4DGL::printf(char *fmt, ...)
-{
-  int i, c, locking;
-  unsigned int *argp;
-  char *s;
-
-  if (fmt == 0)
-    return -1;
-
-  argp = (unsigned int*)(void*)(&fmt + 1);
-  for(i = 0; (c = fmt[i] & 0xff) != 0; i++){
-    if(c != '%'){
-      _putc(c);
-      continue;
+int uLCD_4DGL::printf(const char *fmt, ...) {
+    va_list args;
+    va_start(args, fmt);
+    size_t buffer_size = snprintf(NULL, 0, fmt, args) + 1;
+    char  *buffer = malloc(buffer_size);
+    if (buffer == 0) return -1;
+    sprintf(buffer, fmt, msg, args);
+    for (int i = 0; i < buffer_size; i++) {
+        _putc(buffer[i]);
     }
-    c = fmt[++i] & 0xff;
-    if(c == 0)
-      break;
-    switch(c){
-    case 'd':
-      printint(*argp++, 10, 1);
-      break;
-    case 'x':
-    case 'p':
-      printint(*argp++, 16, 0);
-      break;
-    case 's':
-      if((s = (char*)*argp++) == 0)
-        s = "(null)";
-      for(; *s; s++)
-        _putc(*s);
-      break;
-    case '%':
-      _putc('%');
-      break;
-    default:
-      // Print unknown % sequence to draw attention.
-      _putc('%');
-      _putc(c);
-      break;
-    }
-  }
+    free(buffer);
+    return 0;
 }
