@@ -121,6 +121,8 @@ int uLCD_4DGL :: writeCOMMAND(char *command, int number)   // send several BYTES
 #if DEBUGMODE
     pc.printf("   Answer received : %d\n",resp);
 #endif
+
+    wait_ms(1);
  
     return resp;
 }
