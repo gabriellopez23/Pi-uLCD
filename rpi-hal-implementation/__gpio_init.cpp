@@ -1,3 +1,3 @@
 #include "platform.h"
 
-// static const StartUpGPIO __start_up_gpio;
+static const __StartUp __start_up_gpio;

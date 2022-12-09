@@ -1,7 +1,7 @@
 #pragma once
 
 #ifndef __PLATFORM_H__
-
+#define EMBEDDED_IN_VM 1
 #include <stdlib.h>
 
 // #include "mbed-hal-interface/gpio.h"
@@ -14,10 +14,10 @@
 #include "util.h"
 
 // TODO: proper location
-class StartUpGPIO
+class __StartUp
 {
 public:
-   StartUpGPIO() { 
+   __StartUp() { 
       printf("[C++ -> uLCD] Starting up Pi GPIO\n");
       gpioInitialise();
       std::atexit(gpioTerminate);
