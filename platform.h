@@ -14,22 +14,21 @@
 
 #include "util.h"
 
+static const std::atomic<bool> __start_up_gpio;
+
 // TODO: proper location
 class __StartUp
 {
    public:
-      static bool isInit;
-   public:
    __StartUp() { 
-      printf("[C++ -> uLCD] Starting up Pi GPIO: %d\n", __StartUp::isInit);
-      if (!__StartUp::isInit) {
+      printf("[C++ -> uLCD] Starting up Pi GPIO: %d\n", __start_up_gpio);
+      if (!__start_up_gpio) {
          gpioInitialise();
          std::atexit(gpioTerminate);
       }
    };
 };
 
-static const std::atomic<__StartUp> __start_up_gpio;
 
 
 // void initialize_platform() {
