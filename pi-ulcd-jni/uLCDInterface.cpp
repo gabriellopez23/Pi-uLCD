@@ -23,7 +23,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
         ((sector_address >>  0) & 0xFFFF)
     );
 
-    printf("set sector address %x\n", sector_address)
+    printf("set sector address %x\n", sector_address);
 
     // for (int row = 0; row < height; row++) {
     //     printf("checking row widths: %d", row);
