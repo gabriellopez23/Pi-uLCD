@@ -71,9 +71,10 @@ public final class uLCDInterface {
         int sectorStart = baseSectorAddress;
         for (int i = 0; i < args.length; i++) {
             BufferedImage image = ImageIO.read(new File(args[i]));
-            boolean writeImage = writeImageToULCD(sectorStart, imageToRAW(image));
+            short[][] rgb565Image = imageToRAW(image);
+            boolean writeImage = writeImageToULCD(sectorStart, rgb565Image);
             System.out.printf("Writing image %s to sector %x. %s.\n", args[i], sectorStart, writeImage ? "Success" : "Failed");
-            sectorStart += calculateSectorSize(image);
+            sectorStart += calculateSectorSize(rgb565Image);
         }
     }
 }
