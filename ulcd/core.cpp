@@ -471,7 +471,7 @@ int uLCD_4DGL::printf(const char *fmt, ...) {
     size_t buffer_size = snprintf(NULL, 0, fmt, fmt+1) + 1;
     char  *buffer = (char *) malloc(buffer_size);
     if (buffer == 0) return -1;
-    snprintf(buffer, fmt, fmt+1);
+    snprintf(buffer, buffer_size, fmt, fmt+1);
     for (int i = 0; i < buffer_size; i++) {
         std::printf("%c", buffer[i]);
         _putc(buffer[i]);
