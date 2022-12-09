@@ -12,35 +12,35 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internal_writeImageToULCD
 
     printf("init uLCD media\n");
 
-    uLCD.media_init();
-    uLCD.set_sector_address(
-        ((sector_address >> 16) & 0xFFFF), 
-        ((sector_address >>  0) & 0xFFFF)
-    );
+    // uLCD.media_init();
+    // uLCD.set_sector_address(
+    //     ((sector_address >> 16) & 0xFFFF), 
+    //     ((sector_address >>  0) & 0xFFFF)
+    // );
 
-    for (int row = 0; row < height; row++) {
-        printf("checking row widths: %d", row);
-        if (env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, row)) != width) {
-            return static_cast<jboolean>(false);
-        printf("done\n");
-        }
-    }
+    // for (int row = 0; row < height; row++) {
+    //     printf("checking row widths: %d", row);
+    //     if (env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, row)) != width) {
+    //         return static_cast<jboolean>(false);
+    //     printf("done\n");
+    //     }
+    // }
 
-    for (int row = 0; row < height; row++) {
-        for (int col = 0; col < width; col++) {
-            printf("writing pixel: %d %d", row, col);
-            // jshort pixel_data = (
-            //         ((jshort*)      env->GetShortArrayElements(
-            //         (jshortArray) env->GetObjectArrayElement(img, row),
-            //                       nullptr
-            //     ))[col]);
-            // uLCD.write_byte(static_cast<int>(pixel_data));
-            printf("done\n");
-        }
-    }
+    // for (int row = 0; row < height; row++) {
+    //     for (int col = 0; col < width; col++) {
+    //         printf("writing pixel: %d %d", row, col);
+    //         // jshort pixel_data = (
+    //         //         ((jshort*)      env->GetShortArrayElements(
+    //         //         (jshortArray) env->GetObjectArrayElement(img, row),
+    //         //                       nullptr
+    //         //     ))[col]);
+    //         // uLCD.write_byte(static_cast<int>(pixel_data));
+    //         printf("done\n");
+    //     }
+    // }
 
-    printf("flushing media");
-    uLCD.flush_media();
+    // printf("flushing media");
+    // uLCD.flush_media();
     printf("returning true.");
 
     return static_cast<jboolean>(true);
