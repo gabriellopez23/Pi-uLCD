@@ -39,4 +39,9 @@ find_package(Java REQUIRED)
 include(UseJava)
 project (uLCDInterface NONE)
 set(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.8" "-target" "1.8")
-add_jar(uLCDInterface uLCDInterface.java)
+
+set( LIB_JAVA_SOURCE_FILES 
+    com/nana/uLCDInterface.java
+    )
+
+add_jar(uLCDInterface ${LIB_JAVA_SOURCE_FILES})
