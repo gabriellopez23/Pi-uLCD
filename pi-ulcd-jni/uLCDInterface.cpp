@@ -5,8 +5,8 @@
 JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_writeImageToULCD (JNIEnv * env, jclass java_class, jint sector_start, jobjectArray img) {
     uLCD_4DGL uLCD;
 
-    int height = javaEnvironment->GetArrayLength(img);
-    int width  = javaEnvironment->GetArrayLength((jshortArray) javaEnvironment->GetObjectArrayElement(img, 0));
+    int height = env->GetArrayLength(img);
+    int width  = env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, 0));
 
     uint32_t sector_address = static_cast<uint32_t>(sector_start);
 
@@ -19,8 +19,8 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_writeImageToULCD (JNIEnv 
     for (int row = 0; row < height; row++) {
         for (int col = 0; col < width; col++) {
             uint16_t pixel_data = static_cast<uint16_t>(
-                (jshort) javaEnvironment->GetObjectArrayElement(
-                    (jshortArray) javaEnvironment->GetObjectArrayElement(img, row),
+                    (jshort)      env->GetObjectArrayElement(
+                    (jshortArray) env->GetObjectArrayElement(img, row),
                                   col
                 ));
             uLCD.write_byte(static_cast<int>(pixel_data));
