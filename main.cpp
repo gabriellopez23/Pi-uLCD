@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
             std::cout << "[Help]\nCurrently Supported Programs are: \n";
             std::cout << "demo <num_iters> -> Runs uLCD demo program\n";
             std::cout << "display_image <sector_address> -> Displays the image at the given sector address\n";
-            std::cout << "exit -> quit this demo\n"
+            std::cout << "exit -> quit this demo\n";
             std::cout << std::endl;
         }
     }
