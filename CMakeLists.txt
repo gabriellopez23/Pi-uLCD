@@ -52,7 +52,7 @@ execute_process (
 include(UseJava)
 add_library( pi-ulcd-jni MODULE pi-ulcd-jni/uLCDInterface.cpp com_nana_uLCDInterface.h)
 set_property(TARGET pi-ulcd-jni PROPERTY POSITION_INDEPENDENT_CODE ON)
-target_include_directories( pi-ulcd-jni ${JNI_INCLUDE_DIRS} com/nana/ pi-ulcd-jni)
+target_include_directories( pi-ulcd-jni com/nana/ pi-ulcd-jni)
 target_include_directories( pi-ulcd-jni PRIVATE includes )
 target_include_directories( pi-ulcd-jni PRIVATE mbed-hal-interface )
 target_include_directories( pi-ulcd-jni PRIVATE pi-ulcd-jni)
