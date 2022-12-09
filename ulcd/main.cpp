@@ -467,8 +467,7 @@ int uLCD_4DGL :: getSTATUS(char *command, int number)   // read screen info and 
     return resp;
 }
 
-static void
-printint(int xx, int base, int sign)
+void uLCD_4DGL::printint(int xx, int base, int sign)
 {
   static char digits[] = "0123456789abcdef";
   char buf[16];
