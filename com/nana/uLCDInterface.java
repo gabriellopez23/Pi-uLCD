@@ -82,8 +82,8 @@ public final class uLCDInterface {
         }
         System.out.printf("\n\n\n\n========================================\nSummary: \n");
         for (Map.Entry<String, Integer> entry : sectorAddresses.entrySet()) {
-            System.out.printf("[0x%x] %s\n", entry.getValue(), entry.getKey());
+            System.out.printf("[0x%08x] %s\n", entry.getValue(), entry.getKey());
         }
-        System.out.printf("\n\n\n\n========================================\n");
+        System.out.printf("========================================\n");
     }
 }
