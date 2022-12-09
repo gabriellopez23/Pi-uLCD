@@ -43,4 +43,5 @@ set( LIB_JAVA_SOURCE_FILES
     com/nana/uLCDInterface.java
     )
 set (LIB_JAVA_MANIFEST com/nana/MANIFEST.MF)
-add_jar(uLCDInterface MANIFEST ${LIB_JAVA_MANIFEST} ${LIB_JAVA_SOURCE_FILES})
+add_dependencies(uLCDInterface com/nana/MANIFEST.MF)
+add_jar(uLCDInterface ${LIB_JAVA_SOURCE_FILES} MANIFEST ${LIB_JAVA_MANIFEST})
