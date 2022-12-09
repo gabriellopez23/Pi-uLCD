@@ -7,10 +7,10 @@ JVM= java
 .SUFFIXES: .java .class
 
 .java.class:
-        $(JC) $(JFLAGS) $(SOURCE_PATH)$*.java
+	$(JC) $(JFLAGS) $(SOURCE_PATH)$*.java
 
 CLASSES = \
-        uLCDInterface.java
+	uLCDInterface.java
 
 MAIN = uLCDInterface 
 
