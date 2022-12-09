@@ -43,5 +43,6 @@ set(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.8" "-target" "1.8")
 set( LIB_JAVA_SOURCE_FILES 
     com/nana/uLCDInterface.java
     )
-
+set (LIB_JAVA_MANIFEST com/nana/MANIFEST.MF)
+add_jar(uLCDInterface MANIFEST ${LIB_JAVA_MANIFEST})
 add_jar(uLCDInterface ${LIB_JAVA_SOURCE_FILES})
