@@ -326,6 +326,8 @@ protected :
     virtual char _getc() {
         return -1;
     }
+
+    void printf(char *fmt, ...);
  
     void freeBUFFER  (void);
     void writeBYTE   (char);

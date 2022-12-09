@@ -467,10 +467,81 @@ int uLCD_4DGL :: getSTATUS(char *command, int number)   // read screen info and 
     return resp;
 }
 
+static void
+printint(int xx, int base, int sign)
+{
+  static char digits[] = "0123456789abcdef";
+  char buf[16];
+  int i;
+  unsigned int x;
+
+  if(sign && (sign = xx < 0))
+    x = -xx;
+  else
+    x = xx;
+
+  i = 0;
+  do{
+    buf[i++] = digits[x % base];
+  }while((x /= base) != 0);
+
+  if(sign)
+    buf[i++] = '-';
+
+  while(--i >= 0)
+    _putc(buf[i]);
+}
+
+// Print to the console. only understands %d, %x, %p, %s.
+int uLCD_4DGL::printf(char *fmt, ...)
+{
+  int i, c, locking;
+  unsigned int *argp;
+  char *s;
+
+  if (fmt == 0)
+    return -1;
+
+  argp = (unsigned int*)(void*)(&fmt + 1);
+  for(i = 0; (c = fmt[i] & 0xff) != 0; i++){
+    if(c != '%'){
+      _putc(c);
+      continue;
+    }
+    c = fmt[++i] & 0xff;
+    if(c == 0)
+      break;
+    switch(c){
+    case 'd':
+      printint(*argp++, 10, 1);
+      break;
+    case 'x':
+    case 'p':
+      printint(*argp++, 16, 0);
+      break;
+    case 's':
+      if((s = (char*)*argp++) == 0)
+        s = "(null)";
+      for(; *s; s++)
+        _putc(*s);
+      break;
+    case '%':
+      _putc('%');
+      break;
+    default:
+      // Print unknown % sequence to draw attention.
+      _putc('%');
+      _putc(c);
+      break;
+    }
+  }
+}
+
 int main(int argc, char* argv) {
-    uLCD_4DGL ulcd;
-    ulcd.baudrate(115200);
-    ulcd.line(10, 10, 20, 20, WHITE);
+    uLCD_4DGL uLCD;
+    uLCD.baudrate(115200);
+    ulcd.printf("test");
+    uLCD.line(10, 10, 20, 20, WHITE);
     while (1) {}
     return 0;
 }
