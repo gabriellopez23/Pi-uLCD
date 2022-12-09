@@ -6,7 +6,8 @@ include_directories( mbed-hal-interface )
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 #adding pigpio to project
-include(pigpio/util/Findpigpio.cmake)
+add_subdirectory(pigpio)
+target_link_libraries(RPapp pigpio)
 
 # tell cmake what what are your source files
 set( CPP_SOURCE_FILES 
