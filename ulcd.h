@@ -230,34 +230,45 @@ public :
     */
     void baudrate(int speed);
  
-    /** Set background colour to the specified value
+    /** 
+    * @brief Set background colour to the specified value
+    * 
     * @param color in HEX RGB like 0xFF00FF
     */
     void background_color(int color);
  
-    /** Set screen display mode to specific values
+    /**
+    * @brief Set screen display mode to specific values
+    * 
     * @param color in HEX RGB like 0xFF00FF
     */
     void textbackground_color(int color);
  
-    /** Set screen display mode to specific values
+    /** 
+    * @brief Set screen display mode to specific values
+    * 
     * @param mode See 4DGL documentation
     */
     void display_control(char mode);
 
-    /** Set screen display mode to specific values
+    /** 
+    * @brief Set screen display mode to specific values
+    * 
     * @param mode See 4DGL documentation
     */
     void display_power(char mode);
 
-    /** Set internal speaker to specified value
+    /**
+    * @brief Set internal speaker to specified value
     * @param value Correct range is 8 - 127
     */
     void set_volume(char value);
  
 // Graphics Commands *******************************************************************************
  
-    /** Draw a circle centered at x,y with a radius and a colour. It uses Pen Size stored value to draw a solid or wireframe circle
+    /**  
+    * @brief Draw a circle centered at x,y with a radius and a colour. It uses Pen Size stored value to draw a solid or wireframe circle
+    * 
     * @param x Horizontal position of the circle centre
     * @param y Vertical position of the circle centre
     * @param radius Radius of the circle
@@ -265,7 +276,9 @@ public :
     */
     void circle(int x , int y , int radius, int color);
 
-    /** Draw a color-filled circle centered at x,y with a radius and a colour. It uses Pen Size stored value to draw a solid or wireframe circle
+    /** 
+    * @brief Draw a color-filled circle centered at x,y with a radius and a colour. It uses Pen Size stored value to draw a solid or wireframe circle
+    * 
     * @param x Horizontal position of the circle centre
     * @param y Vertical position of the circle centre
     * @param radius Radius of the circle
@@ -273,7 +286,9 @@ public :
     */
     void filled_circle(int x , int y , int radius, int color);
 
-    /** Draw a triangle with x,y of each vertex and a colour.
+    /** 
+    * @brief Draw a triangle with x,y of each vertex and a colour.
+    * 
     * @param x1 Horizontal position of the first vertex
     * @param y1 Vertical position of the first vertex
     * @param x2 Horizontal position of the second vertex
@@ -284,7 +299,9 @@ public :
     */
     void triangle(int x1, int y1, int x2, int y2, int x3, int y3, int color);
     
-    /** Draw a line by specifying the x,y of its start and end point and a colour.
+    /** 
+    * @brief Draw a line by specifying the x,y of its start and end point and a colour.
+    * 
     * @param x1 Horizontal position of the start point
     * @param y1 Vertical position of the start point
     * @param x2 Horizontal position of the end point
@@ -293,7 +310,9 @@ public :
     */
     void line(int x1, int y1, int x2, int y2, int color);
 
-    /** Draw a rectangle with the x,y of the top-right and bottom-left corners and a colour.
+    /** 
+    * @brief Draw a rectangle with the x,y of the top-right and bottom-left corners and a colour.
+    * 
     * @param x1 Horizontal position of the top-right corner
     * @param y1 Vertical position of the top-right corner
     * @param x2 Horizontal position of the bottom-left corner
@@ -302,7 +321,9 @@ public :
     */
     void rectangle(int x1, int y1, int x2, int y2, int color);
 
-    /** Draw a color-filled rectangle with the x,y of the top-right and bottom-left corners and a colour.
+    /** 
+    * @brief Draw a color-filled rectangle with the x,y of the top-right and bottom-left corners and a colour.
+    * 
     * @param x1 Horizontal position of the top-right corner
     * @param y1 Vertical position of the top-right corner
     * @param x2 Horizontal position of the bottom-left corner
@@ -311,26 +332,34 @@ public :
     */
     void filled_rectangle(int x1, int y1, int x2, int y2, int color);
 
-    /** Draw a single pixel at x,y and with a colour.
+    /** 
+    * @brief Draw a single pixel at x,y and with a colour.
+    * 
     * @param x Horizontal position of the pixel
     * @param y Vertical position of the pixel
     * @param color Rectangle color in HEX RGB like 0xFF00FF
     */
     void pixel(int x, int y, int color);
 
-    /** Reads the color of a pixel at x,y.
+    /** 
+    * @brief Reads the color of a pixel at x,y.
+    * 
     * @param x Horizontal position of the pixel
     * @param y Vertical position of the pixel
     * @return  Color of the pixel in HEX RGB like 0xFF00FF
     */
     int read_pixel(int x, int y);
 
-    /** Change the pen size to SOLID or WIREFRAME
+    /** 
+    * @brief Change the pen size to SOLID or WIREFRAME
+    * 
     * @param mode Pen mode
     */
     void pen_size(char mode);
 
-    /** Draws a block of pixels at x,y and dimensions w,h with their respective colour.
+    /** 
+    * @brief Draws a block of pixels at x,y and dimensions w,h with their respective colour.
+    * 
     * @param x Horizontal position of the pixel block
     * @param y Vertical position of the pixel block
     * @param w Width of the pixel block
@@ -350,53 +379,73 @@ public :
     int printf(const char *fmt, ...);
 
 // Text Commands
-    /** Change the text font (in library or SD card) to display
+    /** 
+    * @brief Change the text font (in library or SD card) to display
+    * 
     * @param mode See 4DGL documentation
     */
     void set_font(char mode);
 
-    /** Change the width and height of the text font
+    /** 
+    * @brief Change the width and height of the text font
+    * 
     * @param width Font size
     * @param height Font height
     */
     void set_font_size(char width, char height);  
 
-    /** Change the text visibility OPAQUE or TRANSPARENT
+    /** 
+    * @brief Change the text visibility OPAQUE or TRANSPARENT
+    * 
     * @param mode See 4DGL documentation
     */
     void text_mode(char mode);
 
-    /** Turn text bold mode ON or OFF
+    /** 
+    * @brief Turn text bold mode ON or OFF
+    * 
     * @param mode See 4DGL documentation
     */
     void text_bold(char mode);
 
-    /** Turn text italic mode ON or OFF
+    /** 
+    * @brief Turn text italic mode ON or OFF
+    * 
     * @param mode See 4DGL documentation
     */
     void text_italic(char mode);
 
-    /** Turn text inverse mode ON or OFF
+    /** 
+    * @brief Turn text inverse mode ON or OFF
+    * 
     * @param mode See 4DGL documentation
     */  
     void text_inverse(char mode);
 
-    /** Turn text underline mode ON or OFF
+    /** 
+    * @brief Turn text underline mode ON or OFF
+    * 
     * @param mode See 4DGL documentation
     */
     void text_underline(char mode);
 
-    /** Adjust text width by a scaling factor
+    /** 
+    * @brief Adjust text width by a scaling factor
+    * 
     * @param width Width scaling factor
     */
     void text_width(char mode);
 
-    /** Adjust text height by a scaling factor
+    /**
+    * @brief Adjust text height by a scaling factor
+    * 
     * @param width Height scaling factor
     */
     void text_height(char mode);
 
-    /** Draw single text char at col,row with a colour
+    /** 
+    * @brief Draw single text char at col,row with a colour
+    * 
     * @param c Text char to draw
     * @param col Horizontal position of the text char
     * @param row Vertical position of the text char
@@ -404,7 +453,9 @@ public :
     */
     void text_char(char c, char col, char row, int color);
 
-    /** Draw a string at col,row with a colour and font
+    /** 
+    * @brief Draw a string at col,row with a colour and font
+    * 
     * @param s String to draw
     * @param col Horizontal position of the string
     * @param row Vertical position of the string
@@ -413,82 +464,111 @@ public :
     */
     void text_string(char * s, char col, char row, char font, int color);
 
-    /** Adjust LCD cursor to position col,row
+    /** 
+    * @brief Adjust LCD cursor to position col,row
+    * 
     * @param col Horizontal position of the cursor
     * @param row Vertical position of the cursor
     */
     void locate(char col, char row);
 
-    /** Set the general text color
+    /** 
+    * @brief Set the general text color
+    * 
     * @param color Text color in HEX RGB like 0xFF00FF
     */   
     void color(int color);
 
-    /** Places a text char at current cursor position
+    /**
+    * @brief Places a text char at current cursor position
+    * 
     * @param c Text char to draw
     */  
     void putc(char c);
 
-    /** Places a string at current cursor position
+    /** 
+    * @brief Places a string at current cursor position
+    * 
     * @param s String to draw
     */  
     void puts(char *s);
  
 //Media Commands
-    /** Initializes SD card for media usage
+    /** 
+    * @brief Initializes SD card for media usage
+    * 
     * @return Serial response from SD card
     */
     int media_init();
     
-     /** Set current byte address in the SD card to hi,lo
+     /** 
+    * @brief Set current byte address in the SD card to hi,lo
+    * 
     * @param hi High word of address
     * @param lo Low word of address
     */
     void set_byte_address(int hi, int lo);
     
-     /** Set current sector address in the SD card to hi,lo
+     /** 
+    * @brief Set current sector address in the SD card to hi,lo
+    * 
     * @param hi High word of address
     * @param lo Low word of address
     */
     void set_sector_address(int hi, int lo);
     
-    /** Read a byte from SD card at the current byte address
+    /** 
+    * @brief Read a byte from SD card at the current byte address
+    * 
     * @return Read byte from the current address
     */
     char read_byte();
     
-    /** Read a word from SD card at the current byte address
+    /** 
+    * @brief Read a word from SD card at the current byte address
+    * 
     * @return Read byte from the current address
     */
     int read_word();
     
-    /** Write a byte to SD card at the current byte address
+    /**
+    * @brief Write a byte to SD card at the current byte address
+    * 
     * @param value Data to write into SD card
     */
     void write_byte(int value);
     
-    /** Write a word to SD card at the current byte address
+    /** 
+    * @brief Write a word to SD card at the current byte address
+    * 
     * @param value Data to write into SD card
     */
     int write_word(int value);
     
-    /** Deletes the media stored at the current sector address
+    /** 
+    * @brief Deletes the media stored at the current sector address
     */
     void flush_media();
 
-    /** Display on uLCD screen an image from current sector address at x,y
+    /** 
+    * @brief Display on uLCD screen an image from current sector address at x,y
+    * 
     * @param x Horizontal position of the image
     * @param y Vertical position of the image
     */
     void display_image(int x, int y);
 
-    /** Display on uLCD screen a video from current sector address at x,y
+    /** 
+    * @brief Display on uLCD screen a video from current sector address at x,y
+    * 
     * @param x Horizontal position of the video
     * @param y Vertical position of the video
     */
     void display_video(int x, int y);
 
-    /** Display on uLCD screen a single frame of video from current sector address at x,y
+    /**
+    * @brief Display on uLCD screen a single frame of video from current sector address at x,y
+    * 
     * @param x Horizontal position of the frame
     * @param y Vertical position of the frame
     * @param w Frame to display
