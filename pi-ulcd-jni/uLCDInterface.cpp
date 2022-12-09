@@ -28,10 +28,16 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
         printf(" done\n");
         }
     }
+    printf("Progress: ");
+    int lastCount = 0;
 
     for (int row = 0; row < height; row++) {
+        if ((100 * row / height) > lastCount) {
+            lastCount++;
+            printf(".");
+        }
         for (int col = 0; col < width; col++) {
-            printf("writing pixel: %d %d", row, col);
+            // printf("writing pixel: %d %d", row, col);
             jshort pixel_data = (
                     ((jshort*)      env->GetShortArrayElements(
                     (jshortArray) env->GetObjectArrayElement(img, row),
@@ -39,12 +45,13 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                 ))[col]);
             if (uLCD.write_word(static_cast<int>(pixel_data)) < 1) {
                 col--;
-                printf("fail. Restarting...\n");
+                // printf("fail. Restarting...\n");
                 continue;
             }
-            printf(" done\n");
+            // printf(" done\n");
         }
     }
+    printf("|\nCompleted.");
 
     printf("flushing media");
     uLCD.flush_media();
