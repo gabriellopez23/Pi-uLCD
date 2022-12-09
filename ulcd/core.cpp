@@ -470,10 +470,11 @@ int uLCD_4DGL :: getSTATUS(char *command, int number)   // read screen info and 
 int uLCD_4DGL::printf(const char *fmt, ...) {
     va_list args;
     va_start(args, fmt);
-    size_t buffer_size = snprintf(NULL, 0, fmt, args) + 1;
+    size_t buffer_size = snprintf(NULL, 0, fmt, args, args) + 1;
     char  *buffer = (char *) malloc(buffer_size);
     if (buffer == 0) return -1;
     sprintf(buffer, fmt, args);
+    printf(buffer);
     for (int i = 0; i < buffer_size; i++) {
         _putc(buffer[i]);
     }
