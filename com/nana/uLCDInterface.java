@@ -32,8 +32,8 @@ public final class uLCDInterface {
         }
     }
     private static int writeSnapshotImage(int sector, String file) {
-        WebView browser = new WebView();
-        WebEngine webEngine = browser.getEngine();
+        WebView webView = new WebView();
+        WebEngine webEngine = webView.getEngine();
         webEngine.load(file);
         final SettableInt ret = new SettableInt();
         // without this runlater, the first capture is missed and all following captures are offset
@@ -54,7 +54,6 @@ public final class uLCDInterface {
                                     short[][] rawImage = imageToRAW(SwingFXUtils.fromFXImage(snapshotResult.getImage()));
                                     writeImageToULCD(sector, rawImage);
                                     ret.set(calculateSectorSize(rawImage));
-                                    unlatch();
                                     return null;
                                 }
                             }, null, null);
@@ -140,7 +139,7 @@ public final class uLCDInterface {
                 if (writeImage) sectorAddresses.put(args[i], sectorStart);
                 if (writeImage) sectorStart += calculateSectorSize(rgb565Image);
             } else if (args[i].toLowerCase().endsWith(".html")) {
-                sectroAddresses.put(args[i], sectorStart);
+                sectorAddresses.put(args[i], sectorStart);
                 sectorStart += writeSnapshotImage(sectorStart, args[i]);
             }
         }
