@@ -26,7 +26,7 @@
  
  
 //******************************************************************************************************
-uLCD_4DGL :: uLCD_4DGL(int rst) : _cmd("/dev/tty"),
+uLCD_4DGL :: uLCD_4DGL(char* sertty, int rst) : _cmd(sertty),
     _rst(rst)
 #if DEBUGMODE
     ,pc(USBTX, USBRX)
@@ -467,6 +467,7 @@ int uLCD_4DGL :: getSTATUS(char *command, int number)   // read screen info and 
     return resp;
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char* argv) {
+    uLCD_4DGL ulcd("/dev/tty", 1);
     return 0;
 }
