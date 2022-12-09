@@ -213,14 +213,19 @@ public :
  
 // General Commands *******************************************************************************
  
-    /** Clear the entire screen using the current background colour */
+    /**
+     * @brief Clear the entire screen using the current background colour 
+     */
     void cls();
  
-    /** Reset screen */
+    /** 
+     * @brief Reset screen 
+     */
     void reset();
  
- 
-    /** Set serial Baud rate (both sides : screen and mbed)
+    /** 
+    * @brief Set serial Baud rate (both sides : screen and mbed)
+    * 
     * @param Speed Correct BAUD value (see uLCD_4DGL.h)
     */
     void baudrate(int speed);
@@ -231,17 +236,20 @@ public :
     void background_color(int color);
  
     /** Set screen display mode to specific values
-    * @param mode See 4DGL documentation
-    * @param value See 4DGL documentation
+    * @param color in HEX RGB like 0xFF00FF
     */
     void textbackground_color(int color);
  
     /** Set screen display mode to specific values
     * @param mode See 4DGL documentation
-    * @param value See 4DGL documentation
     */
     void display_control(char mode);
+
+    /** Set screen display mode to specific values
+    * @param mode See 4DGL documentation
+    */
     void display_power(char mode);
+
     /** Set internal speaker to specified value
     * @param value Correct range is 8 - 127
     */
@@ -332,7 +340,14 @@ public :
     void BLIT(int x, int y, int w, int h, int *colors);
  
 // printf
-    int  printf(const char *fmt, ...);
+    /**
+     * @brief Prints a formatted string to the uLCD display 
+     * 
+     * @param fmt String constant with format specifiers
+     * @param ... Parameter list 
+     * @return 0 on success, otherwise -1 on failure
+     */
+    int printf(const char *fmt, ...);
 
 // Text Commands
     /** Change the text font (in library or SD card) to display
