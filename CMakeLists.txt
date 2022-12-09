@@ -5,6 +5,13 @@ project( pi-ulcd )
 # dependencies for cmake
 find_package(Threads REQUIRED)
 find_package(Java REQUIRED)
+
+#dont need jni extensions
+set(JAVA_AWT_LIBRARY NotNeeded)
+set(JAVA_JVM_LIBRARY NotNeeded)
+set(JAVA_INCLUDE_PATH2 NotNeeded)
+set(JAVA_AWT_INCLUDE_PATH NotNeeded)
+
 find_package(JNI REQUIRED)
 add_subdirectory(pigpio)
 
