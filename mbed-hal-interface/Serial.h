@@ -14,7 +14,7 @@
 // TODO: convert in types to pinname and pinmode types acc to pigpio
 
 namespace nana {
-    const int DEFAULT_SERIAL_BAUD_RATE = 115200;
+    const int DEFAULT_SERIAL_BAUD_RATE = 9600;
     class Serial { //: Stream {
         public:
         Serial(char* location, int baudrate = DEFAULT_SERIAL_BAUD_RATE);
