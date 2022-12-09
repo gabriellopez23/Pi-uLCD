@@ -3,7 +3,6 @@
 #ifndef __PLATFORM_H__
 #define EMBEDDED_IN_VM 1
 #include <stdlib.h>
-#include <stdatomic.h>
 
 // #include "mbed-hal-interface/gpio.h"
 // #include "mbed-hal-interface/DigitalIn.h"
@@ -14,21 +13,18 @@
 
 #include "util.h"
 
-static const std::atomic<bool> __start_up_gpio;
-
 // TODO: proper location
 class __StartUp
 {
    public:
    __StartUp() { 
-      printf("[C++ -> uLCD] Starting up Pi GPIO: %d\n", __start_up_gpio);
-      if (!__start_up_gpio) {
-         gpioInitialise();
-         std::atexit(gpioTerminate);
-      }
+      printf("[C++ -> uLCD] Starting up Pi GPIO\n");
+      gpioInitialise();
+      std::atexit(gpioTerminate);
    };
 };
 
+static const __StartUp __start_up_gpio;
 
 
 // void initialize_platform() {
