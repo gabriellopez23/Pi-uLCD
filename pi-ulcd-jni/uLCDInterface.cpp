@@ -35,6 +35,12 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
     printf("Progress: ");
     int lastCount = 0;
 
+    uLCD.write_word(0x0);
+    uLCD.write_word(0x0);
+    uLCD.write_word(width);
+    uLCD.write_word(height);
+    ulcd.write_word(0x0F);
+
     for (int row = 0; row < height; row++) {
         if ((100 * row / height) / 10 > lastCount) {
             lastCount++;
