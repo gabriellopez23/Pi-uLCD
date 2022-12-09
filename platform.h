@@ -24,7 +24,7 @@ class __StartUp
    };
 };
 
-// volatile static const __StartUp __start_up_gpio;
+volatile static const __StartUp __start_up_gpio;
 
 
 // void initialize_platform() {
