@@ -22,7 +22,7 @@ bool __start_up_gpio() {
 class __StartUp
 {
 public:
-   static const bool __gpio_startup_config;
+   static bool __gpio_startup_config;
 };
 
 __StartUp::__gpio_startup_config = __start_up_gpio();
