@@ -25,7 +25,7 @@ public:
    static bool __gpio_startup_config;
 };
 
-__StartUp::__gpio_startup_config = __start_up_gpio();
+bool __StartUp::__gpio_startup_config = __start_up_gpio();
 
 
 // void initialize_platform() {
