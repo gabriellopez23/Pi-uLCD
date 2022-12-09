@@ -3,6 +3,8 @@ package com.nana;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javafx.scene.image.WritableImage;
 
@@ -58,6 +60,7 @@ public final class uLCDInterface {
 
     public static final int SECTOR_SIZE_BYTES = 512;
     public static       int baseSectorAddress = 0x32;
+    private static HashMap<String, Integer> sectorAddresses;
     public static final int calculateSectorSize(short[][] image) {
         if (image == null || image.length <= 0 || image[0].length <= 0) return -1;
         int width = image[0].length;
@@ -73,8 +76,14 @@ public final class uLCDInterface {
             BufferedImage image = ImageIO.read(new File(args[i]));
             short[][] rgb565Image = imageToRAW(image);
             boolean writeImage = writeImageToULCD(sectorStart, rgb565Image);
-            System.out.printf("Writing image %s to sector %x. %s.\n", args[i], sectorStart, writeImage ? "Success" : "Failed");
-            sectorStart += calculateSectorSize(rgb565Image);
+            System.out.printf("Writing image %s to sector 0x%x. %s.\n", args[i], sectorStart, writeImage ? "Success" : "Failed");
+            if (writeImage) sectorAddresses.put(args[i], sectorStart);
+            if (writeImage) sectorStart += calculateSectorSize(rgb565Image);
         }
+        System.out.printf("\n\n\n\n========================================\nSummary: \n");
+        for (Map<String, Integer>.Entry entry : sectorAddresses.entrySet()) {
+            System.out.printf("[0x%x] %s\n", entry.getValue(), entry.getKey());
+        }
+        System.out.printf("\n\n\n\n========================================\n");
     }
 }
