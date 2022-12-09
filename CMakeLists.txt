@@ -9,7 +9,7 @@ find_package(Java REQUIRED)
 #dont need jni extensions
 set(JAVA_AWT_LIBRARY NotNeeded)
 set(JAVA_JVM_LIBRARY NotNeeded)
-set(JAVA_INCLUDE_PATH2 NotNeeded)
+set(JAVA_INCLUDE_PATH2 /usr/lib/jvm/java-11-openjdk-armhf/includes)
 set(JAVA_AWT_INCLUDE_PATH NotNeeded)
 set(JAVA_INCLUDE_PATH /usr/lib/jvm/java-11-openjdk-armhf)
 find_package(JNI REQUIRED)
