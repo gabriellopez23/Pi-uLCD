@@ -15,13 +15,43 @@ namespace nana {
     class DigitalOut {
         // TODO: constructors: init GPIO object?
         public:
+        /**
+         * @brief Construct a new Digital Out object at a GPIO pin
+         * 
+         * @param pinname GPIO pin to use
+         */
         DigitalOut(int pinname);
+
+        /**
+         * @brief Construct a new Digital Out object at a GPIO pin that writes a value when defined
+         * 
+         * @param pinname GPIO pin to use
+         * @param value Value to write on definition
+         */
         DigitalOut(int pinname, int value);
         // ~DigitalOut() {
         //     // delete gpio object
         // }
+
+        /**
+         * @brief Read input from the GPIO pin
+         * 
+         * @return Input read from pin
+         */
         int read();
+
+        /**
+         * @brief Write a value to the GPIO pin
+         * 
+         * @param value Value to write to pin
+         */
         void write(int value);
+
+        /**
+         * @brief Verify if the GPIO pin is connected
+         * 
+         * @return Non-zero number if true, else 0
+         */
         int is_connected();
 
         DigitalOut& operator= (int value);
