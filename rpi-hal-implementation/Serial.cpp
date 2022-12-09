@@ -6,7 +6,7 @@ int nana::Serial::baud(int baudrate) {
         if (serClose(_ser) < 0) {
             exit(EXIT_FAILURE);
         }
-        if ((_ser = serOpen(this -> location, baudrate, 0)) < 0) {
+        if ((_ser = serOpen((char*) this -> location, baudrate, 0)) < 0) {
             exit(__INTERFACE_FATAL_ERROR);
         }
     }
