@@ -3,6 +3,7 @@
 
 
 int main(int argc, char* argv) {
+    uLCD_4DGL uLCD;
     uLCD.printf("\nHello uLCD World\n"); //Default Green on black text
     uLCD.printf("\n  Starting Demo...");
     uLCD.text_width(4); //4X size text
