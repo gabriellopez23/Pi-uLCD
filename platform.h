@@ -18,7 +18,7 @@ class __StartUp
 {
    public:
       static bool isInit;
-public:
+   public:
    __StartUp() { 
       printf("[C++ -> uLCD] Starting up Pi GPIO: %d\n", __StartUp::isInit);
       if (!__StartUp::isInit) {
