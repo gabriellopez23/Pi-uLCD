@@ -23,7 +23,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
         printf("checking row widths: %d", row);
         if (env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, row)) != width) {
             return static_cast<jboolean>(false);
-        printf("done\n");
+        printf(" done\n");
         }
     }
 
@@ -36,7 +36,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                                   nullptr
                 ))[col]);
             uLCD.write_byte(static_cast<int>(pixel_data));
-            printf("done\n");
+            printf(" done\n");
         }
     }
 
