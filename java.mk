@@ -23,4 +23,4 @@ run: $(MAIN).class
 	$(JVM) $(MAIN) $(FILE)
 
 clean:
-        $(RM) *.class
+	$(RM) *.class
