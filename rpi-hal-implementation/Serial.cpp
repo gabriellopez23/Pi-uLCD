@@ -1,5 +1,6 @@
 #include "mbed-hal-interface/Serial.h"
 
+// TODO: proper location
 class StartUp
 {
 public:
