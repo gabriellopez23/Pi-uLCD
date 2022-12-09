@@ -9,6 +9,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set( CPP_SOURCE_FILES 
     rpi-hal-implementation/DigitalOut.cpp
     rpi-hal-implementation/Serial.cpp
+    rpi-hal-implementation/util.cpp
     ulcd/graphics.cpp
     ulcd/media.cpp
     ulcd/text.cpp
