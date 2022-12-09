@@ -1,5 +1,5 @@
 #include "com_nana_uLCDInterface.h"
-#include "ulcd.h"
+// #include "ulcd.h"
 #include <cstdint>
 
 JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD (JNIEnv * env, jclass java_class, jint sector_start, jobjectArray img) {
