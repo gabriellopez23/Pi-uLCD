@@ -44,15 +44,10 @@ target_link_libraries( pi-ulcd-demo PRIVATE pigpio )
 target_link_libraries( pi-ulcd-demo PRIVATE Threads::Threads )
 target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
 
-install(
-    FILES ../build-java.sh
-    PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-    DESTINATION ./
+execute_process (
+    COMMAND bash -c "cp ../build-java.sh ./ && chmod 777 ./build-java.sh && ./build-java.sh"
 )
 
-execute_process (
-    COMMAND bash -c "pwd"
-)
 
 include(UseJava)
 add_library( pi-ulcd-jni MODULE pi-ulcd-jni/uLCDInterface.cpp com_nana_uLCDInterface.h)
