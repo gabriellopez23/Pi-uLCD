@@ -468,6 +468,6 @@ int uLCD_4DGL :: getSTATUS(char *command, int number)   // read screen info and 
 }
 
 int main(int argc, char* argv) {
-    uLCD_4DGL ulcd("/dev/tty");
+    uLCD_4DGL ulcd();
     return 0;
 }
