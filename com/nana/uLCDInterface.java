@@ -4,11 +4,11 @@ import java.awt.image.BufferedImage;
 import javafx.scene.image.WritableImage;
 
 public final class uLCDInterface {
-    // static {
-    //     System.loadLibrary("pi-ulcd-jni");
-    // }
+    static {
+        System.loadLibrary("pi-ulcd-jni");
+    }
 
-    // public final native boolean writeImageToULCD(int sectorStart, int[][] image);
+    public final native boolean writeImageToULCD(int sectorStart, byte[][] image);
 
     private interface ImageConverter {
         public int getIntColor(int row, int col);
