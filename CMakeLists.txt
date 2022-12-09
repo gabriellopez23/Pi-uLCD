@@ -37,7 +37,6 @@ target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
 
 find_package(Java REQUIRED)
 include(UseJava)
-project (uLCDInterface NONE)
 set(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.8" "-target" "1.8")
 
 set( LIB_JAVA_SOURCE_FILES 
