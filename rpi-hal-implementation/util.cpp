@@ -11,3 +11,12 @@ void wait_ms(int ms) {
 void wait(int s) {
     usleep(1000*1000*s);
 }
+
+class StartUp
+{
+public:
+   StartUp()
+   { gpioInitialise(); }
+};
+
+StartUp startup;
