@@ -70,7 +70,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
         }
     }
     // printf("|\nCompleted.");
-    std::cout << "|" <<std::endl << "Completed." << std::endl;
+    std::cout << std::endl << "Completed." << std::endl;
 
     printf("flushing media");
     uLCD.flush_media();
