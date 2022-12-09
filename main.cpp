@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-void demo_program();
+void demo_program(int);
 
 int main(int argc, char** argv) {
     while (1) {
@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
         } else {
             std::cout << "[Help]\nCurrently Supported Programs are: \n";
             std::cout << "demo <num_iters> -> Runs uLCD demo program\n";
-            std::cout << endl;
+            std::cout << std::endl;
         }
     }
     return 0;
