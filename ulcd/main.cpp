@@ -466,3 +466,7 @@ int uLCD_4DGL :: getSTATUS(char *command, int number)   // read screen info and 
  
     return resp;
 }
+
+int main(int argc, char** argv) {
+    return 0;
+}
