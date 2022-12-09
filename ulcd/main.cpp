@@ -469,5 +469,7 @@ int uLCD_4DGL :: getSTATUS(char *command, int number)   // read screen info and 
 
 int main(int argc, char* argv) {
     uLCD_4DGL ulcd();
+    ulcd.printf("some text");
+    while (1) {}
     return 0;
 }
