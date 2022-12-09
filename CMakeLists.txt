@@ -14,7 +14,8 @@ set( CPP_SOURCE_FILES
     ulcd/graphics.cpp
     ulcd/media.cpp
     ulcd/text.cpp
-    ulcd/main.cpp
+    ulcd/core.cpp
+    main.cpp
     )
 
 # if you are creating an executable then do so like this
