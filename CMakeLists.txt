@@ -11,7 +11,7 @@ set(JAVA_AWT_LIBRARY NotNeeded)
 set(JAVA_JVM_LIBRARY NotNeeded)
 set(JAVA_INCLUDE_PATH2 NotNeeded)
 set(JAVA_AWT_INCLUDE_PATH NotNeeded)
-
+set(JAVA_INCLUDE_PATH /usr/lib/jvm/java-11-openjdk-armhf)
 find_package(JNI REQUIRED)
 add_subdirectory(pigpio)
 
