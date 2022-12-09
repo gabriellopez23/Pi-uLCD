@@ -1,5 +1,8 @@
 project( pi-ulcd )
 
+# make a pi-ulcd static library
+add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
+
 # set your include directories (if you have any)
 target_include_directories( pi-ulcd includes )
 target_include_directories( pi-ulcd mbed-hal-interface )
@@ -20,11 +23,6 @@ set( LIB_CPP_SOURCE_FILES
 # if you are creating an executable then do so like this
 # note that ${MY_CPP_FILES} will replace it with its content
 # add_executable( pi-ulcd ${LIB_CPP_SOURCE_FILES} )
-
-
-# if you instead want a library, do it like so
-add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
-# add_library( mySharedLib SHARED ${MY_CPP_FILES} ) # create a shared library
 
 #add pthread library
 find_package(Threads REQUIRED)
