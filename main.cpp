@@ -1,7 +1,7 @@
 #include "platform.h"
 #include "ulcd.h"
 
-#include <stdio.h>
+#include <iostream>
 
 void demo_program();
 
