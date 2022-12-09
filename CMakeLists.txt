@@ -4,6 +4,8 @@ project( pi-ulcd )
 
 # dependencies for cmake
 find_package(Threads REQUIRED)
+find_package(Java REQUIRED)
+find_package(JNI REQUIRED)
 add_subdirectory(pigpio)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -34,3 +36,26 @@ target_include_directories( pi-ulcd-demo PRIVATE mbed-hal-interface )
 target_link_libraries( pi-ulcd-demo PRIVATE pigpio )
 target_link_libraries( pi-ulcd-demo PRIVATE Threads::Threads )
 target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
+
+install(
+    FILES ../build-java.sh
+    PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+    DESTINATION ./
+)
+
+execute_process (
+    COMMAND bash -c "./build-java.sh"
+)
+
+include(UseJava)
+add_library( pi-ulcd-jni MODULE pi-ulcd-jni/uLCDInterface.cpp com_nana_uLCDInterface.h)
+set_property(TARGET pi-ulcd-jni PROPERTY POSITION_INDEPENDENT_CODE ON)
+target_include_directories(${JNI_INCLUDE_DIRS} ${_classDir} ${_stubDir})
+target_include_directories( pi-ulcd-jni PRIVATE includes )
+target_include_directories( pi-ulcd-jni PRIVATE mbed-hal-interface )
+target_include_directories( pi-ulcd-jni PRIVATE pi-ulcd-jni)
+target_link_libraries( pi-ulcd-jni PRIVATE pigpio )
+target_link_libraries( pi-ulcd-jni PRIVATE Threads::Threads )
+target_link_libraries( pi-ulcd-jni PRIVATE pi-ulcd )
+target_link_libraries( pi-ulcd-jni ${JNI_LIBRARIES} )
+set_target_properties( pi-ulcd-jni PROPERTIES SUFFIX ".so" )

@@ -8,13 +8,13 @@ public final class uLCDInterface {
         System.loadLibrary("pi-ulcd-jni");
     }
 
-    public final native boolean writeImageToULCD(int sectorStart, byte[][] image);
+    public static final native boolean writeImageToULCD(int sectorStart, byte[][] image);
 
-    private interface ImageConverter {
+    private static interface ImageConverter {
         public int getIntColor(int row, int col);
     }
 
-    private final <T> byte[][] convertImage(int width, int height, T imgSrc, ImageConverter converter) {
+    private static final <T> byte[][] convertImage(int width, int height, T imgSrc, ImageConverter converter) {
       byte[][] result = new byte[height][width * 4];
 
       for (int row = 0; row < height; row++) {
@@ -29,13 +29,13 @@ public final class uLCDInterface {
       return result;
     }
 
-    public final byte[][] imageToRAW(BufferedImage img) {
+    public static final byte[][] imageToRAW(BufferedImage img) {
         int width = img.getWidth();
         int height = img.getHeight();
         return convertImage(width, height, img, img::getRGB);
     }
 
-    public final byte[][] imageToRAW(WritableImage img) {
+    public static final byte[][] imageToRAW(WritableImage img) {
         int width = (int) img.getWidth();
         int height = (int) img.getHeight();
         return convertImage(width, height, img, img.getPixelReader()::getArgb);
@@ -44,5 +44,6 @@ public final class uLCDInterface {
     public static void main(String[] args) {
         for (int i = 0; i < args.length; i++)
             System.out.printf(args[i] + "\n");
+        System.out.println("Loaded library " + writeImageToULCD(0, null));
     }
 }

@@ -1,6 +1,6 @@
 modulePath="/usr/share/openjfx/lib"
 outputDirectory="./build/"
-headerOutputDirectory="./build/"
+headerOutputDirectory="./pi-ulcd-jni/"
 declare -a javafxModules=(
     "javafx.base"
     "javafx.graphics"
