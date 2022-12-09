@@ -13,13 +13,19 @@
 
 #include "util.h"
 
-bool __start_up_gpio() { gpioInitialise(); std::atexit(gpioTerminate); return 0;}
+bool __start_up_gpio() { 
+   gpioInitialise();
+   std::atexit(gpioTerminate);
+   return 0;
+}
 // TODO: proper location
 class __StartUp
 {
 public:
-   static const bool __gpio_startup_config =__start_up_gpio();
+   static const bool __gpio_startup_config;
 };
+
+__StartUp::__gpio_startup_config = __start_up_gpio();
 
 
 // void initialize_platform() {
