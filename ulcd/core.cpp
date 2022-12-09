@@ -478,7 +478,6 @@ int uLCD_4DGL::printf(const char *fmt, ...) {
     vsprintf(buffer, fmt, args);
     va_end(args);
     for (int i = 0; i < buffer_size; i++) {
-        std::printf("%c", buffer[i]);
         _putc(buffer[i]);
     }
     free(buffer);
