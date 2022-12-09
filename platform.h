@@ -18,7 +18,7 @@ class __StartUp
 {
 public:
    __StartUp() { 
-      cprintf("[C++ -> uLCD] Starting up Pi GPIO\n");
+      printf("[C++ -> uLCD] Starting up Pi GPIO\n");
       gpioInitialise();
       std::atexit(gpioTerminate);
    };
