@@ -3,6 +3,7 @@ package com.nana;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -81,9 +82,13 @@ public final class uLCDInterface {
             if (writeImage) sectorStart += calculateSectorSize(rgb565Image);
         }
         System.out.printf("\n\n\n\n========================================\nSummary: \n");
+        PrintWriter output = new PrintWriter(new File("uLCD_SD_sector_map.h"));
+        output.printf("#pragma once\n#ifndef __ULCD_SD_SECTOR_MAP_H__\n\n");
         for (Map.Entry<String, Integer> entry : sectorAddresses.entrySet()) {
             System.out.printf("[0x%08x] %s\n", entry.getValue(), entry.getKey());
+            output.printf("#define %s 0x%08x\n", entry.getKey().replace("/", "_").replace(".", "_").toUpperCase().replace("\"", "").replace("\'", "").replace(" ", "_"), entry.getValue());
         }
+        output.printf("\n#define __ULCD_SD_SECTOR_MAP_H__\n#endif\n");
         System.out.printf("========================================\n");
     }
 }
