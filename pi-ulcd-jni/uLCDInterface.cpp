@@ -1,6 +1,7 @@
 #include "com_nana_uLCDInterface.h"
 #include "ulcd.h"
 #include <cstdint>
+#include <iostream>
 
 JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD (JNIEnv * env, jclass java_class, jint sector_start, jobjectArray img) {
     gpioInitialise();
@@ -42,12 +43,15 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
     printf("metadata written\n");
 
 
-    printf("Progress: ");
-    fflush(stdout);
+    // printf("Progress: ");
+    // fflush(stdout);
+
+    std::cout << "Progress: " << std::flush;
 
     for (int row = 0; row < height; row++) {
-        printf(".");
-        fflush(stdout);
+        // printf(".");
+        // fflush(stdout);
+        std::cout << "." << std::flush;
         for (int col = 0; col < width; col++) {
             // printf("writing pixel: %d %d", row, col);
             jshort pixel_data = (
@@ -57,14 +61,15 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                 ))[col]);
             if (uLCD.write_word(static_cast<int>(pixel_data)) < 1) {
                 col--;
-                printf("x");
+                // printf("x");
                 fflush(stdout);
                 continue;
             }
             // printf(" done\n");
         }
     }
-    printf("|\nCompleted.");
+    // printf("|\nCompleted.");
+    std::cout << "|" <<std::endl << "Completed." << std::endl;
 
     printf("flushing media");
     uLCD.flush_media();
