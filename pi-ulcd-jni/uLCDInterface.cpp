@@ -3,7 +3,7 @@
 #include <cstdint>
 
 JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD (JNIEnv * env, jclass java_class, jint sector_start, jobjectArray img) {
-    // gpioInitialise();
+    gpioInitialise();
     uLCD_4DGL uLCD;
 
     int height = env->GetArrayLength(img);
