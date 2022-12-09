@@ -21,13 +21,13 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
         ((sector_address >>  0) & 0xFFFF)
     );
 
-    for (int row = 0; row < height; row++) {
-        printf("checking row widths: %d", row);
-        if (env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, row)) != width) {
-            return static_cast<jboolean>(false);
-        printf(" done\n");
-        }
-    }
+    // for (int row = 0; row < height; row++) {
+    //     printf("checking row widths: %d", row);
+    //     if (env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, row)) != width) {
+    //         return static_cast<jboolean>(false);
+    //     printf(" done\n");
+    //     }
+    // }
     printf("Progress: ");
     int lastCount = 0;
 
