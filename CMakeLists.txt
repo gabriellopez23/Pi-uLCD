@@ -1,8 +1,8 @@
 project( pi-ulcd )
 
 # set your include directories (if you have any)
-target_include_directories( includes )
-target_include_directories( mbed-hal-interface )
+target_include_directories( pi-ulcd includes )
+target_include_directories( pi-ulcd mbed-hal-interface )
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 
