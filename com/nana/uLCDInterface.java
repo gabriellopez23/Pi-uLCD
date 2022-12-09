@@ -16,7 +16,10 @@ public final class uLCDInterface {
     private static final synchronized native boolean internalWriteImageToULCD(int sectorStart, short[][] image);
 
     public static final boolean writeImageToULCD(int sectorStart, short[][] image) {
-        if (sectorStart > 0 && image != null) return internalWriteImageToULCD(sectorStart, image);
+        if (sectorStart > 0 && image != null) {
+            System.out.println("yay");
+            return internalWriteImageToULCD(sectorStart, image);
+        }
         else return false;
         // return internalWriteImageToULCD(0, null);
     }
