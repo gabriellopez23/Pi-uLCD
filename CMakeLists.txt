@@ -37,7 +37,6 @@ target_link_libraries(pi-ulcd pigpio)
 # if you instead want a library, do it like so
 # add_library( myStaticLib STATIC ${MY_CPP_FILES} ) # create a static library
 # add_library( mySharedLib SHARED ${MY_CPP_FILES} ) # create a shared library
-message("pwd: ${CMAKE_CURRENT_LIST_DIR}")
 add_executable( pi-ulcd-demo main.cpp )
-target_link_libraries( pi-ulcd-demo ./libpi-ulcd.a )
+target_link_libraries( pi-ulcd-demo pi-ulcd )
 
