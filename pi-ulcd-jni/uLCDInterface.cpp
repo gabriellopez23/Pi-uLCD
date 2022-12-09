@@ -16,10 +16,14 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
     printf("init uLCD media\n");
 
     uLCD.media_init();
+
+    printf("media initialized. Setting sector address...\n");
     uLCD.set_sector_address(
         ((sector_address >> 16) & 0xFFFF), 
         ((sector_address >>  0) & 0xFFFF)
     );
+
+    printf("set sector address %x\n", sector_address)
 
     // for (int row = 0; row < height; row++) {
     //     printf("checking row widths: %d", row);
