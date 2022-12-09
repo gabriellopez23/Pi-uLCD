@@ -13,7 +13,7 @@ public final class uLCDInterface {
         System.loadLibrary("pi-ulcd-jni");
     }
 
-    private static final native boolean internalWriteImageToULCD(int sectorStart, short[][] image);
+    private static final synchronized native boolean internalWriteImageToULCD(int sectorStart, short[][] image);
 
     public static final boolean writeImageToULCD(int sectorStart, short[][] image) {
         // if (sectorStart > 0 && image != null) return internal_writeImageToULCD(sectorStart, image);
