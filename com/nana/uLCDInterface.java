@@ -39,11 +39,11 @@ public final class uLCDInterface {
         }
     }
     private static int writeSnapshotImage(int sector, String file) {
-        Stage s = new Stage("headless");
+        Stage s = new Stage();
         s.setWidth(0);
         s.setHeight(0);
         WebView webView = new WebView();
-        s.setScene(webView);
+        s.setScene(new Scene(webView));
         WebEngine webEngine = webView.getEngine();
         webEngine.load(file);
         final SettableInt ret = new SettableInt();
