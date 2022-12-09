@@ -4,6 +4,8 @@ project( pi-ulcd )
 find_package(Threads REQUIRED)
 add_subdirectory(pigpio)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 # tell cmake what what are your source files
 set( LIB_CPP_SOURCE_FILES 
     rpi-hal-implementation/DigitalOut.cpp
