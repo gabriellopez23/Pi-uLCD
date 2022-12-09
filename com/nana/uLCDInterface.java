@@ -89,6 +89,8 @@ public final class uLCDInterface {
             output.printf("#define %s 0x%08x\n", entry.getKey().replace("/", "_").replace(".", "_").toUpperCase().replace("\"", "").replace("\'", "").replace(" ", "_"), entry.getValue());
         }
         output.printf("\n#define __ULCD_SD_SECTOR_MAP_H__\n#endif\n");
+        output.flush();
+        output.close();
         System.out.printf("========================================\n");
     }
 }
