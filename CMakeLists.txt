@@ -5,6 +5,10 @@ include_directories( includes )
 include_directories( mbed-hal-interface )
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+#adding libraries to project
+find_package(pigpio REQUIRED)
+target_link_libraries(pi-ulcd PRIVATE pigpio)
+
 # tell cmake what what are your source files
 set( CPP_SOURCE_FILES 
     rpi-hal-implementation/DigitalOut.cpp
