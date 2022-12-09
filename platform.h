@@ -25,8 +25,6 @@ public:
    static bool __gpio_startup_config;
 };
 
-bool __StartUp::__gpio_startup_config = __start_up_gpio();
-
 
 // void initialize_platform() {
 //     if (gpioInitialise() < 0) exit(EXIT_FAILURE);

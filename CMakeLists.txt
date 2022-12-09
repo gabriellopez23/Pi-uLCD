@@ -15,6 +15,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # tell cmake what what are your source files
 set( LIB_CPP_SOURCE_FILES 
+    rpi-hal-implementation/__gpio_init.cpp
     rpi-hal-implementation/DigitalOut.cpp
     rpi-hal-implementation/Serial.cpp
     rpi-hal-implementation/util.cpp
