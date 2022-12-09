@@ -13,7 +13,12 @@ StartUp startup;
 int nana::Serial::baud(int baudrate) {
     this-> baudrate = baudrate;
     if (__PI_UART_INTERFACE == __PI_PIGPIO) {
-        return __INTERFACE_ACCEPTABLE_UNSUPPORTED_OPERATION;
+        if (serClose(_ser) < 0) {
+            exit(EXIT_FAILURE);
+        }
+        if ((_ser = serOpen(this -> location, baudrate, 0)) < 0) {
+            exit(__INTERFACE_FATAL_ERROR);
+        }
     }
     return __INTERFACE_UNSUPPORTED_INTERFACE;
 }
@@ -39,6 +44,7 @@ bool nana::Serial::readable() {
 }
 
 nana::Serial::Serial(char* location, int baudrate) {
+    this -> location = location;
     if (__PI_UART_INTERFACE == __PI_PIGPIO) { 
         //TODO: confirm this is the sertty
         if ((_ser = serOpen(location, baudrate, 0)) < 0) {

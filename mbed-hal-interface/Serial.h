@@ -25,6 +25,7 @@ namespace nana {
         bool readable();
 
         private:
+        char* location;
         int baudrate;
         int _ser;
     };
