@@ -327,7 +327,7 @@ protected :
         return -1;
     }
 
-    void printint(int xx, int base, int sign)
+    void printint(int xx, int base, int sign);
     int  printf(char *fmt, ...);
  
     void freeBUFFER  (void);
