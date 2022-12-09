@@ -10,9 +10,9 @@ JVM= java
 	$(JC) $(JFLAGS) $(SOURCE_PATH)$*.java
 
 CLASSES = \
-	uLCDInterface.java
+	$(SOURCE_PATH)uLCDInterface.java
 
-MAIN = uLCDInterface 
+MAIN = com.nana.uLCDInterface 
 
 default: classes
 
