@@ -26,7 +26,7 @@
  
  
 //******************************************************************************************************
-uLCD_4DGL :: uLCD_4DGL(char* sertty, int rst) : _cmd(sertty, 9600),
+uLCD_4DGL :: uLCD_4DGL(const char* sertty, int rst) : _cmd(sertty, 9600),
     _rst(rst)
 #if DEBUGMODE
     ,pc(USBTX, USBRX)
