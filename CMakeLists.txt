@@ -15,30 +15,22 @@ set( LIB_CPP_SOURCE_FILES
     ulcd/core.cpp
     )
 
+    
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # make a pi-ulcd static library
 add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
 
 # set your include directories (if you have any)
 target_include_directories( pi-ulcd PRIVATE includes )
 target_include_directories( pi-ulcd PRIVATE mbed-hal-interface )
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-
-# if you are creating an executable then do so like this
-# note that ${MY_CPP_FILES} will replace it with its content
-# add_executable( pi-ulcd ${LIB_CPP_SOURCE_FILES} )
-
-#add pthread library
-target_link_libraries(pi-ulcd Threads::Threads)
-
-#adding pigpio to project
-target_link_libraries(pi-ulcd pigpio)
+target_link_libraries(pi-ulcd PRIVATE Threads::Threads)
+target_link_libraries(pi-ulcd PRIVATE pigpio)
 
 #compiling demo with this lib
 add_executable( pi-ulcd-demo main.cpp )
 target_include_directories( pi-ulcd-demo PRIVATE includes )
 target_include_directories( pi-ulcd-demo PRIVATE mbed-hal-interface )
-target_link_libraries( pi-ulcd-demo Threads::Threads )
-target_link_libraries( pi-ulcd-demo pigpio )
-target_link_libraries( pi-ulcd-demo pi-ulcd )
+target_link_libraries( pi-ulcd-demo PRIVATE Threads::Threads )
+target_link_libraries( pi-ulcd-demo PRIVATE pigpio )
+target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
 
