@@ -1,5 +1,8 @@
 project( pi-ulcd )
 
+get_test_property(${PROJECT_NAME} WORKING_DIRECTORY test_dir)
+message("My test's working directory: ${test_dir}")
+
 # set your include directories (if you have any)
 include_directories( includes )
 include_directories( mbed-hal-interface )
@@ -40,3 +43,4 @@ target_link_libraries(pi-ulcd pigpio)
 
 add_executable( pi-ulcd-demo main.cpp )
 target_link_libraries( pi-ulcd-demo ./libpi-ulcd.a )
+
