@@ -1,8 +1,37 @@
 #include "platform.h"
 #include "ulcd.h"
 
+#include <stdio.h>
+
+void demo_program();
 
 int main(int argc, char* argv) {
+    while (1) {
+        std::string choice;
+
+        std::cout << "\n\nEnter the Demo Program you want to run: " << std::flush;
+        std::cin >> choice;
+        std::cout << std::endl;
+
+        if (choice == "demo") {
+            int iters = 0;
+            std::cout "\nEnter number of iterations for bouncing ball program: " << std::flush;
+            std::cin >> iters;
+            std::cout << std::endl;
+            demo_program(iters);
+        } else if (choice == "exit") {
+            break;
+        } else {
+            std::cout << "[Help]\nCurrently Supported Programs are: \n";
+            std::cout << "demo <num_iters> -> Runs uLCD demo program\n";
+            std::cout << endl;
+        }
+    }
+    return 0;
+}
+
+void demo_program(int iters) {
+    
     printf("runnning demo program\n");
     uLCD_4DGL uLCD;
     uLCD.printf("\nHello uLCD World\n"); //Default Green on black text
@@ -66,7 +95,7 @@ int main(int argc, char* argv) {
     uLCD.line(127, 0, 127, 127, WHITE);
     uLCD.line(127, 127, 0, 127, WHITE);
     uLCD.line(0, 127, 0, 0, WHITE);
-    for (int i=0; i<1500; i++) {
+    for (int i=0; i<iters; i++) {
         //draw ball
         uLCD.filled_circle(x, y, radius, RED);
         //bounce off edge walls and slow down a bit?
@@ -80,5 +109,4 @@ int main(int argc, char* argv) {
         x=(int)fx;
         y=(int)fy;
     }
-    return 0;
 }

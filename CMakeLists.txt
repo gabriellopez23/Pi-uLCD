@@ -14,9 +14,6 @@ set( LIB_CPP_SOURCE_FILES
     ulcd/text.cpp
     ulcd/core.cpp
     )
-
-    
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # make a pi-ulcd static library
 add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
 
