@@ -267,7 +267,7 @@ public :
     void BLIT(int x, int y, int w, int h, int *colors);
  
 // printf
-    int  printf(char *fmt, ...);
+    int  printf(const char *fmt, ...);
 
 // Text Commands
     void set_font(char);
