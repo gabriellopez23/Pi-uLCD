@@ -1,3 +1,5 @@
+cmake_minimum_required (VERSION 3.18)
+
 project( pi-ulcd )
 
 # dependencies for cmake
@@ -33,3 +35,8 @@ target_link_libraries( pi-ulcd-demo PRIVATE pigpio )
 target_link_libraries( pi-ulcd-demo PRIVATE Threads::Threads )
 target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
 
+find_package(Java REQUIRED)
+include(UseJava)
+project (uLCDInterface NONE)
+set(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.8" "-target" "1.8")
+add_jar(HelloWorld HelloWorld.java)
