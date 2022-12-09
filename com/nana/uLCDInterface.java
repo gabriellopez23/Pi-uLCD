@@ -36,8 +36,8 @@ public final class uLCDInterface {
     }
 
     public final byte[][] imageToRAW(WritableImage img) {
-        int width = img.getWidth();
-        int height = img.getHeight();
+        int width = (int) img.getWidth();
+        int height = (int) img.getHeight();
         return convertImage(width, height, img, img.getPixelReader()::getArgb);
     }
 
