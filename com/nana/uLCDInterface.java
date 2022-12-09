@@ -64,7 +64,7 @@ public final class uLCDInterface {
         for (int i = 0; i < image.length; i++) {
             if (image[i].length != width) return -1;
         }
-        return (int) Math.ceil(1.0 * image.length * image[0].length / 512);
+        return (int) Math.ceil(2.0 * image.length * image[0].length / 512);
     }
 
     public static void main(String[] args) throws IOException {
