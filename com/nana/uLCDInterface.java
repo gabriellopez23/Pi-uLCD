@@ -8,10 +8,50 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javafx.scene.image.WritableImage;
+import javafx.application.Platform;
+import javafx.animation.AnimationTimer;
+import javafx.scene.web.WebView;
+import javafx.scene.web.WebEngine;
+import javafx.scene.SnapshotResult;
+import javafx.embed.swing.SwingFXUtils;
 
 import javax.imageio.ImageIO;
 
 public final class uLCDInterface {
+    private void writeSnapshotImage(String file) {
+        WebView browser = new WebView();
+        WebEngine webEngine = browser.getEngine();
+        webEngine.load(file);
+        // without this runlater, the first capture is missed and all following captures are offset
+        Platform.runLater(new Runnable() {
+            public void run() {
+                // start a new animation timer which waits for exactly two pulses
+                new AnimationTimer() {
+                    int frames = 0;
+
+                    @Override
+                    public void handle(long l) {
+                        // capture at exactly two frames
+                        if (++frames == 2) {
+                            System.out.println("Attempting image capture");
+                            webView.snapshot(new Callback<SnapshotResult,Void>() {
+                                @Override
+                                public Void call(SnapshotResult snapshotResult) {
+                                    capture.set(SwingFXUtils.fromFXImage(snapshotResult.getImage(), null));
+                                    unlatch();
+                                    return null;
+                                }
+                            }, null, null);
+
+                            //stop timer after snapshot
+                            stop();
+                        }
+                    }
+                }.start();
+            }
+        });
+    }
+
     static {
         System.loadLibrary("pi-ulcd-jni");
     }

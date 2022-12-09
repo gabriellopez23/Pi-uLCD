@@ -34,7 +34,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
     //     }
     // }
 
-    printf("writing metadata...");
+    printf("writing metadata... ");
     // uLCD.write_word(0x0);
     // uLCD.write_word(0x0);
     uLCD.write_word(width);
