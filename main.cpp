@@ -7,6 +7,7 @@ void demo_program(int);
 void display_image_at_sector(int, int);
 
 int main(int argc, char** argv) {
+    gpioInitialise();
     while (1) {
         std::string choice;
 
