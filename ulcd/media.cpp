@@ -110,7 +110,7 @@ void uLCD_4DGL :: write_byte(int value)
 }
  
 //******************************************************************************************************
-void uLCD_4DGL :: write_word(int value)
+int uLCD_4DGL :: write_word(int value)
 {
     char command[3]= "";
  
@@ -118,7 +118,7 @@ void uLCD_4DGL :: write_word(int value)
  
     command[1] = (value >> 8) & 0xFF;
     command[2] = value & 0xFF;
-    writeCOMMAND(command,3);
+    return writeCOMMAND(command,3);
 }
  
 //******************************************************************************************************
