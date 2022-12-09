@@ -45,7 +45,7 @@ execute_process (
 )
 
 execute_process (
-    COMMAND bash -c "cd .. && cp ./res ./build/res"
+    COMMAND bash -c "cd .. && cp -r ./res ./build/res"
 )
 
 
