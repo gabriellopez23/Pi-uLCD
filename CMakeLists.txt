@@ -44,6 +44,10 @@ execute_process (
     COMMAND bash -c "cd .. && chmod 777 ./build-java.sh && ./build/build-java.sh && chmod 777 ./run-java.sh && cp ./run-java.sh ./build/run-java.sh"
 )
 
+execute_process (
+    COMMAND bash -c "cd .. && cp ./res ./build/res"
+)
+
 
 include(UseJava)
 add_library( pi-ulcd-jni MODULE pi-ulcd-jni/uLCDInterface.cpp com_nana_uLCDInterface.h)
