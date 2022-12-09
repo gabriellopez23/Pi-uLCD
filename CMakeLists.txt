@@ -21,6 +21,9 @@ set( CPP_SOURCE_FILES
 # note that ${MY_CPP_FILES} will replace it with its content
 add_executable( pi-ulcd ${CPP_SOURCE_FILES} )
 
+#add pthread library
+find_package(Threads REQUIRED)
+target_link_libraries(pi-ulcd PRIVATE Threads::Threads)
 
 #adding pigpio to project
 add_subdirectory(pigpio)
