@@ -35,7 +35,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                     (jshortArray) env->GetObjectArrayElement(img, row),
                                   nullptr
                 ))[col]);
-            uLCD.write_word(static_cast<int>(pixel_data));
+            if (uLCD.write_word(static_cast<int>(pixel_data)) < 1) return static_cast<jboolean>(false);
             printf(" done\n");
         }
     }
