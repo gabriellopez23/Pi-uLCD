@@ -19,7 +19,7 @@ class StartUp
 {
 public:
    StartUp()
-   { gpioInitialise(); std::atexit(exiting);}
+   { gpioInitialise(); std::atexit(gpioTerminate());}
 };
 
 static const StartUp __gpio_startup_config;
