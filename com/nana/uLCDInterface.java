@@ -51,7 +51,7 @@ public final class uLCDInterface {
                             webView.snapshot(new Callback<SnapshotResult,Void>() {
                                 @Override
                                 public Void call(SnapshotResult snapshotResult) {
-                                    short[][] rawImage = imageToRAW(SwingFXUtils.fromFXImage(snapshotResult.getImage()));
+                                    short[][] rawImage = imageToRAW(SwingFXUtils.fromFXImage(snapshotResult.getImage(), null));
                                     writeImageToULCD(sector, rawImage);
                                     ret.set(calculateSectorSize(rawImage));
                                     return null;
