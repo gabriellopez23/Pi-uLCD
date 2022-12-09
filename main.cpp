@@ -5,7 +5,7 @@
 
 void demo_program();
 
-int main(int argc, char* argv) {
+int main(int argc, char** argv) {
     while (1) {
         std::string choice;
 
@@ -15,7 +15,7 @@ int main(int argc, char* argv) {
 
         if (choice == "demo") {
             int iters = 0;
-            std::cout "\nEnter number of iterations for bouncing ball program: " << std::flush;
+            std::cout << "\nEnter number of iterations for bouncing ball program: " << std::flush;
             std::cin >> iters;
             std::cout << std::endl;
             demo_program(iters);
