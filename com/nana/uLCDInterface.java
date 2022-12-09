@@ -20,10 +20,15 @@ import java.util.concurrent.Semaphore;
 import javax.imageio.ImageIO;
 
 public final class uLCDInterface {
-    private static void waitForRunLater() throws InterruptedException {
-        Semaphore semaphore = new Semaphore(0);
-        Platform.runLater(() -> semaphore.release());
-        semaphore.acquire();
+    private static void waitForRunLater() {
+        try {
+            Semaphore semaphore = new Semaphore(0);
+            Platform.runLater(() -> semaphore.release());
+            semaphore.acquire();
+        } catch (Exception e) {
+            System.err.printf("Fatal Error\n");
+            System.exit(-1);
+        }
     }
     private static class SettableInt {
         public int value;
