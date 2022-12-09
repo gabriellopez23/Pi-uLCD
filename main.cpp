@@ -16,7 +16,7 @@ int main(int argc, char* argv) {
     }
     uLCD.cls();
     uLCD.printf("Change baudrate......");
-    uLCD.baudrate(3000000); //jack up baud rate to max for fast display
+    uLCD.baudrate(1000000); //jack up baud rate to max for fast display
     //if demo hangs here - try lower baud rates
     //
     // printf text only full screen mode demo
