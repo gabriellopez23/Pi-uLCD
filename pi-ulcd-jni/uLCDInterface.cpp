@@ -39,7 +39,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
         if ((100 * row / height) > lastCount) {
             lastCount++;
             printf(".");
-            fflush(stdout)
+            fflush(stdout);
         }
         for (int col = 0; col < width; col++) {
             // printf("writing pixel: %d %d", row, col);
