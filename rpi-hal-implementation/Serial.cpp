@@ -28,7 +28,7 @@ bool nana::Serial::readable() {
     return __INTERFACE_UNSUPPORTED_INTERFACE;
 }
 
-nana::Serial::Serial(char* location, int baudrate = nana::DEFAULT_SERIAL_BAUD_RATE) {
+nana::Serial::Serial(char* location, int baudrate) {
     if (__PI_UART_INTERFACE == __PI_PIGPIO) { 
         //TODO: confirm this is the sertty
         if ((_ser = serOpen(location, baudrate, 0)) < 0) {
