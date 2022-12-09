@@ -3,14 +3,14 @@
 #include <cstdint>
 
 JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internal_1writeImageToULCD (JNIEnv * env, jclass java_class, jint sector_start, jobjectArray img) {
-    uLCD_4DGL uLCD;
+    // uLCD_4DGL uLCD;
 
-    int height = env->GetArrayLength(img);
-    int width  = env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, 0));
+    // int height = env->GetArrayLength(img);
+    // int width  = env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, 0));
 
-    uint32_t sector_address = static_cast<uint32_t>(sector_start);
+    // uint32_t sector_address = static_cast<uint32_t>(sector_start);
 
-    printf("init uLCD media\n");
+    // printf("init uLCD media\n");
 
     // uLCD.media_init();
     // uLCD.set_sector_address(
