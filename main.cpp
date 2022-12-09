@@ -12,7 +12,7 @@ int main(int argc, char* argv) {
     uLCD.color(RED);
     for (int i=10; i>=0; --i) {
         uLCD.locate(1,2);
-        uLCD.printf("%2D",i);
+        uLCD.printf("%2d",i);
         wait(.5);
     }
     uLCD.cls();
@@ -31,7 +31,7 @@ int main(int argc, char* argv) {
     int i=0;
     while(i<64) {
         if(i%16==0) uLCD.cls();
-        uLCD.printf("TxtLine %2D Page %D\n",i%16,i/16 );
+        uLCD.printf("TxtLine %2d Page %d\n",i%16,i/16 );
         i++; //16 lines with 18 charaters per line
     }
     wait(0.5);
