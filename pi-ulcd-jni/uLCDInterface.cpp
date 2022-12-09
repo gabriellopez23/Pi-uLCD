@@ -43,6 +43,5 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
     printf("flushing media");
     uLCD.flush_media();
     printf("returning true.\n");
-    gpioTerminate();
     return static_cast<jboolean>(true);
 }
