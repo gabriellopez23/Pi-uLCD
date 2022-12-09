@@ -16,6 +16,8 @@ import javafx.scene.SnapshotResult;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.util.Callback;
 import java.util.concurrent.Semaphore;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 import javax.imageio.ImageIO;
 
