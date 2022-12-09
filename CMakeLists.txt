@@ -51,7 +51,7 @@ install(
 )
 
 execute_process (
-    COMMAND bash -c "./build/build-java.sh"
+    COMMAND bash -c "pwd"
 )
 
 include(UseJava)
