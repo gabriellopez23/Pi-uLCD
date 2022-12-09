@@ -32,14 +32,18 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
     //     printf(" done\n");
     //     }
     // }
-    printf("Progress: ");
-    int lastCount = 0;
 
+    printf("writing metadata...");
     uLCD.write_word(0x0);
     uLCD.write_word(0x0);
     uLCD.write_word(width);
     uLCD.write_word(height);
     uLCD.write_word(0x0F);
+    printf("metadata written\n");
+
+
+    printf("Progress: ");
+    int lastCount = 0;
 
     for (int row = 0; row < height; row++) {
         if ((100 * row / height) / 10 > lastCount) {
