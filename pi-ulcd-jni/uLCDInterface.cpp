@@ -61,7 +61,7 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                 ))[col]);
             if (uLCD.write_word(static_cast<int>(pixel_data)) < 1) {
                 col--;
-                // printf("fail. Restarting...\n");
+                printf("fail. Restarting...\n");
                 continue;
             }
             // printf(" done\n");
