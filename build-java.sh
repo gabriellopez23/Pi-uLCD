@@ -3,6 +3,8 @@ outputDirectory="./build/"
 headerOutputDirectory="./pi-ulcd-jni/"
 declare -a javafxModules=(
     "javafx.base"
+    "javafx.web"
+    "javafx.swing"
     "javafx.graphics"
     "javafx.media"
     )
