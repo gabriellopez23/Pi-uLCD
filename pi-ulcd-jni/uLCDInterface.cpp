@@ -6,6 +6,8 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
     gpioInitialise();
     uLCD_4DGL uLCD;
 
+    uLCD.baud(115200);
+
     int height = env->GetArrayLength(img);
     int width  = env->GetArrayLength((jshortArray) env->GetObjectArrayElement(img, 0));
 
