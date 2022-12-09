@@ -540,7 +540,7 @@ int uLCD_4DGL::printf(char *fmt, ...)
 int main(int argc, char* argv) {
     uLCD_4DGL uLCD;
     uLCD.baudrate(115200);
-    ulcd.printf("test");
+    uLCD.printf("test");
     uLCD.line(10, 10, 20, 20, WHITE);
     while (1) {}
     return 0;
