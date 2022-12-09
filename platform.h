@@ -13,11 +13,7 @@
 
 #include "util.h"
 
-bool __start_up_gpio() { 
-   gpioInitialise();
-   std::atexit(gpioTerminate);
-   return 0;
-}
+bool __start_up_gpio();
 // TODO: proper location
 class __StartUp
 {
