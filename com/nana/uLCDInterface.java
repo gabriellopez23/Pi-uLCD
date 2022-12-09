@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import javafx.scene.image.WritableImage;
+// import javafx.scene.image.WritableImage;
 
 import javax.imageio.ImageIO;
 
@@ -45,11 +45,11 @@ public final class uLCDInterface {
         return convertImage(width, height, img, img::getRGB);
     }
 
-    public static final short[][] imageToRAW(WritableImage img) {
-        int width = (int) img.getWidth();
-        int height = (int) img.getHeight();
-        return convertImage(width, height, img, img.getPixelReader()::getArgb);
-    }
+    // public static final short[][] imageToRAW(WritableImage img) {
+    //     int width = (int) img.getWidth();
+    //     int height = (int) img.getHeight();
+    //     return convertImage(width, height, img, img.getPixelReader()::getArgb);
+    // }
 
     public static void main(String[] args) throws IOException {
         for (int i = 0; i < args.length; i++) {
