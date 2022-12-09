@@ -81,7 +81,7 @@ public final class uLCDInterface {
             if (writeImage) sectorStart += calculateSectorSize(rgb565Image);
         }
         System.out.printf("\n\n\n\n========================================\nSummary: \n");
-        for (Map<String, Integer>.Entry entry : sectorAddresses.entrySet()) {
+        for (Map.Entry<String, Integer> entry : sectorAddresses.entrySet()) {
             System.out.printf("[0x%x] %s\n", entry.getValue(), entry.getKey());
         }
         System.out.printf("\n\n\n\n========================================\n");
