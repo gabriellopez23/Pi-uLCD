@@ -53,8 +53,8 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
         // fflush(stdout);
         std::cout << std::endl;
         for (int col = 0; col < width; col++) {
-            // printf("writing pixel: %d %d", row, col);
-            std::cout << "." << std::flush;
+            printf("writing pixel: %d %d", row, col);
+            // std::cout << "." << std::flush;
             jshort pixel_data = (
                     ((jshort*)      env->GetShortArrayElements(
                     (jshortArray) env->GetObjectArrayElement(img, row),
@@ -62,10 +62,10 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                 ))[col]);
             if (uLCD.write_word(static_cast<int>(pixel_data)) < 1) {
                 col--;
-                // printf("x");
-                // fflush(stdout);
+                printf(" failed. Retrying...\n");
+                fflush(stdout);
             }
-            // printf(" done\n");
+            printf(" done\n");
         }
     }
     // printf("|\nCompleted.");
