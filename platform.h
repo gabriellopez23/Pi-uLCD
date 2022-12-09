@@ -24,8 +24,6 @@ class __StartUp
    };
 };
 
-static const __StartUp __start_up_gpio;
-
 
 // void initialize_platform() {
 //     if (gpioInitialise() < 0) exit(EXIT_FAILURE);
