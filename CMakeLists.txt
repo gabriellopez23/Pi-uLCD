@@ -45,7 +45,7 @@ target_link_libraries( pi-ulcd-demo PRIVATE Threads::Threads )
 target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
 
 install(
-    FILES build-java.sh
+    FILES ../build-java.sh
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
     DESTINATION ./
 )
@@ -57,7 +57,7 @@ execute_process (
 include(UseJava)
 add_library( pi-ulcd-jni MODULE pi-ulcd-jni/uLCDInterface.cpp com_nana_uLCDInterface.h)
 set_property(TARGET pi-ulcd-jni PROPERTY POSITION_INDEPENDENT_CODE ON)
-target_include_directories(pi-ulcd-jni ${JNI_INCLUDE_DIRS} ${_classDir} ${_stubDir})
+target_include_directories( pi-ulcd-jni ${JNI_INCLUDE_DIRS} com/nana/ pi-ulcd-jni)
 target_include_directories( pi-ulcd-jni PRIVATE includes )
 target_include_directories( pi-ulcd-jni PRIVATE mbed-hal-interface )
 target_include_directories( pi-ulcd-jni PRIVATE pi-ulcd-jni)
