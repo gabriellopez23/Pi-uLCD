@@ -16,11 +16,15 @@
 // TODO: proper location
 class __StartUp
 {
+   private:
+      static bool isInit;
 public:
    __StartUp() { 
-      printf("[C++ -> uLCD] Starting up Pi GPIO\n");
-      gpioInitialise();
-      std::atexit(gpioTerminate);
+      printf("[C++ -> uLCD] Starting up Pi GPIO: %d\n", isInit);
+      if (!isInit) {
+         gpioInitialise();
+         std::atexit(gpioTerminate);
+      }
    };
 };
 
