@@ -43,4 +43,5 @@ set( LIB_JAVA_SOURCE_FILES
     com/nana/uLCDInterface.java
     )
 set (LIB_JAVA_MANIFEST com/nana/MANIFEST.MF)
+file(REMOVE uLCDInterface.jar)
 add_jar(uLCDInterface ${LIB_JAVA_SOURCE_FILES} MANIFEST ${LIB_JAVA_MANIFEST})
