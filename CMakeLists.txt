@@ -44,7 +44,7 @@ target_link_libraries( pi-ulcd-demo PRIVATE Threads::Threads )
 target_link_libraries( pi-ulcd-demo PRIVATE pi-ulcd )
 
 execute_process (
-    COMMAND bash -c "chmod 777 ../build-java.sh && ../build-java.sh"
+    COMMAND bash -c "chmod 777 ../build-java.sh && ../build-java.sh || chmod 777 ../run-java.sh "
 )
 
 
