@@ -19,7 +19,7 @@ set( CPP_SOURCE_FILES
 
 # if you are creating an executable then do so like this
 # note that ${MY_CPP_FILES} will replace it with its content
-add_executable( myExec ${CPP_SOURCE_FILES} )
+add_executable( pigpio ${CPP_SOURCE_FILES} )
 
 
 #adding pigpio to project
