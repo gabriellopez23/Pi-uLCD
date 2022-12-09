@@ -3,6 +3,7 @@
 #ifndef __PLATFORM_H__
 #define EMBEDDED_IN_VM 1
 #include <stdlib.h>
+#include <stdatomic.h>
 
 // #include "mbed-hal-interface/gpio.h"
 // #include "mbed-hal-interface/DigitalIn.h"
@@ -28,7 +29,7 @@ class __StartUp
    };
 };
 
-static const __StartUp __start_up_gpio;
+static const std::atomic<__StartUp> __start_up_gpio;
 
 
 // void initialize_platform() {
