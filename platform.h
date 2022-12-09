@@ -16,7 +16,7 @@
 // TODO: proper location
 class __StartUp
 {
-   private:
+   public:
       static bool isInit;
 public:
    __StartUp() { 
