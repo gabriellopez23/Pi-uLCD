@@ -1,8 +1,8 @@
 project( pi-ulcd )
 
 # set your include directories (if you have any)
-include_directories( includes )
-include_directories( mbed-hal-interface )
+target_include_directories( includes )
+target_include_directories( mbed-hal-interface )
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 
@@ -28,17 +28,15 @@ add_library( pi-ulcd STATIC ${LIB_CPP_SOURCE_FILES} ) # create a static library
 
 #add pthread library
 find_package(Threads REQUIRED)
-target_link_libraries(pi-ulcd PRIVATE Threads::Threads)
+target_link_libraries(pi-ulcd Threads::Threads)
 
 #adding pigpio to project
 add_subdirectory(pigpio)
 target_link_libraries(pi-ulcd pigpio)
 
-# if you instead want a library, do it like so
-# add_library( myStaticLib STATIC ${MY_CPP_FILES} ) # create a static library
-# add_library( mySharedLib SHARED ${MY_CPP_FILES} ) # create a shared library
+#compiling demo with this lib
 add_executable( pi-ulcd-demo main.cpp )
-target_link_libraries(pi-ulcd-demo PRIVATE Threads::Threads)
-target_link_libraries(pi-ulcd-demo pigpio)
+target_link_libraries( pi-ulcd-demo Threads::Threads )
+target_link_libraries( pi-ulcd-demo pigpio )
 target_link_libraries( pi-ulcd-demo pi-ulcd )
 
