@@ -60,7 +60,7 @@ public final class uLCDInterface {
 
     public static final int SECTOR_SIZE_BYTES = 512;
     public static       int baseSectorAddress = 0x32;
-    private static HashMap<String, Integer> sectorAddresses;
+    private static HashMap<String, Integer> sectorAddresses = new HashMap<String, Integer>();
     public static final int calculateSectorSize(short[][] image) {
         if (image == null || image.length <= 0 || image[0].length <= 0) return -1;
         int width = image[0].length;
