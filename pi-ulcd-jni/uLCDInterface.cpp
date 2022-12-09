@@ -64,15 +64,15 @@ JNIEXPORT jboolean JNICALL Java_com_nana_uLCDInterface_internalWriteImageToULCD 
                 // printf(" failed. Retrying...\n");
                 // fflush(stdout);
             }
-            wait_us(75);
+            wait_us(100);
             // printf(" done\n");
         }
     }
     printf("|\nCompleted.");
-    std::cout << std::endl << "Completed." << std::endl;
+    // std::cout << std::endl << "Completed." << std::endl;
 
     printf("flushing media");
     uLCD.flush_media();
-    printf("returning true.\n");
+    // printf("returning true.\n");
     return static_cast<jboolean>(true);
 }
