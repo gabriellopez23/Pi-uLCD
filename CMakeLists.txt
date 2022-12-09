@@ -8,10 +8,7 @@ find_package(Java REQUIRED)
 
 #dont need jni extensions
 find_package(JNI REQUIRED)
-if (JNI_FOUND)
-    message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
-    message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
-endif()
+
 add_subdirectory(pigpio)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
